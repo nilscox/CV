@@ -1,0 +1,310 @@
+%!TEX TS-program = xelatex
+\documentclass[a4paper]{article}
+\NeedsTeXFormat{LaTeX2e}
+
+%%%%%%%%%%
+% Colors %
+%%%%%%%%%%
+
+\RequirePackage{xcolor}
+
+\definecolor{white}{RGB}{255,255,255}
+
+\definecolor{darkgray}{HTML}{333333}
+\definecolor{gray}{HTML}{4D4D4D}
+\definecolor{lightgray}{HTML}{999999}
+\definecolor{headercolor}{HTML}{333333}
+
+\definecolor{green}{HTML}{72b54c}
+\definecolor{orange}{HTML}{b56d4c}
+\definecolor{purple}{HTML}{b54c72}
+\definecolor{blue}{HTML}{4c97b5}
+
+%%%%%%%%%
+% Fonts %
+%%%%%%%%%
+
+\RequirePackage[quiet]{fontspec}
+\RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
+
+\newfontfamily\bodyfont[
+  BoldFont=texgyreheros-bold.otf,
+  ItalicFont=texgyreheros-italic.otf,
+  BoldItalicFont=texgyreheros-bolditalic.otf
+]{texgyreheros-regular.otf}
+
+\newfontfamily\thinfont[]{Lato-Light.ttf}
+\newfontfamily\headingfont[]{texgyreheros-bold.otf}
+
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont[
+  Mapping=tex-text,
+  Color=textcolor,
+  BoldFont=texgyreheros-bold.otf,
+  ItalicFont=texgyreheros-italic.otf,
+  BoldItalicFont=texgyreheros-bolditalic.otf
+]{texgyreheros-regular.otf}
+
+%%%%%%%%%%
+% Header %
+%%%%%%%%%%
+
+\RequirePackage{tikz}
+
+\newcommand{\rolefont}{%
+  \fontsize{14pt}{24pt}\selectfont%
+  \thinfont%
+  \color{white}%
+}
+
+\newcommand{\header}[3]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node [rectangle, anchor=north, minimum width=\paperwidth, minimum height=3.5cm] (box) at (current page.north){};
+    \node [anchor=center] (name) at (box.center) {%
+      \fontsize{40pt}{72pt}\color{darkgray}%
+      {\thinfont #1} {\bodyfont  #2}
+    };
+    \draw[blue, line width=3pt] (1.2, -1) -- (2.7, -1);
+    \draw[orange, line width=3pt] (2.7, -1) -- (4.2, -1);
+    \draw[green, line width=3pt] (4.2, -1) -- (5.7, -1);
+    \draw[purple, line width=3pt] (5.7, -1) -- (7.1, -1);
+%    \node [anchor=south west] at (name.south east) {%
+%      \fontsize{14pt}{24pt}\color{darkgray}%
+%      \thinfont #3%
+%    };
+  \end{tikzpicture}
+  \vspace{1.2cm}
+}
+
+
+%%%%%%%%%%%%%
+% Structure %
+%%%%%%%%%%%%%
+
+\RequirePackage{parskip}
+
+\newcounter{colorCounter}
+\def\@sectioncolor#1#2#3{%
+  {%
+    \color{%
+      \ifcase\value{colorCounter}%
+        blue\or%
+        orange\or%
+        green\or%
+        purple\fi%
+    } #1#2#3%
+  }%
+  \stepcounter{colorCounter}%
+}
+
+\renewcommand{\section}[1]{
+  \par\vspace{.8\parskip}
+  {%
+    \LARGE\headingfont\color{headercolor}%
+    \@sectioncolor #1%
+  }
+}
+
+\renewcommand{\subsection}[1]{
+  \par\vspace{.2\parskip}%
+  {%
+  \large\headingfont\color{headercolor} #1%
+  }
+  \par\vspace{.25\parskip}%
+}
+
+\pagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%
+% List environment %
+%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\tabcolsep}{0pt}
+\newenvironment{entrylist}{%
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}
+}{%
+  \end{tabular*}
+}
+
+\renewcommand{\bfseries}{\headingfont\color{headercolor}}
+\newcommand{\entry}[4]{%
+  #1&\parbox[t]{11.0cm}{%
+    \textbf{#2}%
+    \hfill%
+    {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
+    #4\vspace{\parsep}%
+  }\\}
+
+
+%%%%%%%%%%%%%%
+% Side block %
+%%%%%%%%%%%%%%
+
+\RequirePackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1cm}
+\setlength{\TPVertModule}{1cm}
+\newenvironment{aside}{%
+  \let\oldsection\section
+  \renewcommand{\section}[1]{
+    \par\vspace{2\baselineskip}{\Large\headingfont\color{headercolor} ##1}\vspace{\baselineskip}
+  }
+  \begin{textblock}{3.5}(2.2, 3.1)
+  \begin{flushright}
+  \obeycr
+}{%
+  \restorecr
+  \end{flushright}
+  \end{textblock}
+  \let\section\oldsection
+}
+
+
+%%%%%%%%%%%%%%%%
+% Other tweaks %
+%%%%%%%%%%%%%%%%
+
+\RequirePackage[left=6.4cm,top=1.3cm,right=1.5cm,bottom=0cm,nohead ,nofoot]{geometry}
+\RequirePackage{hyperref}
+
+\usepackage{setspace}
+\usepackage[none]{hyphenat}
+\usepackage{enumitem}
+\usepackage{blindtext}
+
+\begin{document}
+
+\header{Nils }{Layet}{Développeur web back et front-end}
+
+
+% In the aside, each new line forces a line break
+\begin{aside}
+  \includegraphics[width=\linewidth]{profile_center.jpg}
+  \section{Contact}
+    94800 Villejuif
+    France
+    ~
+    \href{mailto:nils@epita.fr}{nils@epita.fr}
+    \href{https://nilslayet.com}{https://nilslayet.com}
+    ~
+    \textbf{LinkedIn} \hfill nilslayet
+    \textbf{Github} \hfill nilscox
+    \textbf{Bitbucket} \hfill  nilscox
+  \section{Langues}
+    Français natif
+    Anglais courant
+    Espagnol notions
+  \section{Technos}
+  \begin{sloppypar}
+    \flushleft
+    \begin{itemize}
+      \item[\textbf{C / C++}] gcc, gdb, make, autotools, cmake, valgrind
+      \item[\textbf{PHP}] Symfony2, Laravel
+      \item[\textbf{Python}] Django, Flask
+      \item[\textbf{PostgreSQL}] Postgis, Solr
+      \item[\textbf{Java}] Maven, JEE, ElasticSearch
+      \item[\textbf{JavaScript}] Node, Express, Angular2, React, Redux, SocketIO
+      \item[\textbf{Autres}] Unix / Linux, Shell, Admin sys, HTML5, CSS3, git, Redis, Docker
+    \end{itemize}
+    \end{sloppypar}
+\end{aside}
+
+\section{Cursus}
+
+\begin{entrylist}
+  \entry
+    {depuis 2012}
+    {Diplôme d'ingénieur en informatique}
+    {EPITA, Paris}
+    {Majeure Multimédia et Technologies de l'Information}
+  \entry
+    {02 - 07 2014}
+    {Cursus universitaire Erasmus}
+    {Bahçeşehir Üniversitesi, Istanbul}
+    {Un semestre complet dans une université en Turquie (cours en anglais)}
+  \entry
+    {2009 - 2011}
+    {Baccalauréat Scientifique}
+    {Lycée J. Siegfried, Le Havre}
+    {Mention AB}
+  \entry
+    {2008 - 2009}
+    {Junior}
+    {Casa Grande High School, Petaluma (CA)}
+    {Une année en immersion complète en Californie}
+\end{entrylist}
+
+\section{Expériences professionnelles}
+
+\begin{entrylist}
+  \entry
+    {06 - 10 2017}
+    {Projet de fin d'études : Développeur back-end}
+    {Watsize (startup), Paris}
+    {Java JEE, ElasticSearch : Développement du backend d'un site e-commerce, travail de recherche sur la catégorisation de catalogues produits}
+  \entry
+    {2015 - 2017}
+    {ACDC / YAKA / ACU}
+    {EPITA, Paris}
+    {Participation à la formation des étudiants de l'EPITA (enseignement du C, C++, SQL, Java, C\#)}
+  \entry
+    {09 - 12 2015}
+    {Stage : Développeur back et front-end}
+    {Carizy (startup), Paris}
+    {PHP, Symfony2 : Développement et maintien d'un site de vente de PaP, mise en place d'un processus d'\emph{intégration continue}}
+  \entry
+    {07 - 08 2014}
+    {Stage : Développeur android}
+    {Hénoïda (startup), Paris}
+    {Java, Android : Participation au développement d'une application Android pour entraîner sa mémoire. PoC et intégration d'un \emph{OCR} pour les caractères 
+japonais}
+\end{entrylist}
+
+\section{Projets}
+
+\subsection{A l'\emph{EPITA}}
+
+\begin{entrylist}
+  \entry
+  {08 - 08 2014}
+  {42sh}
+  {C, libpthread}
+  {Implémentation complète d'un shell POSIX \emph{from scratch}}
+  \entry
+  {04 - 07 2015}
+  {YaKaramel}
+  {Java JEE, SpringMVC, Hibernate, MySQL}
+  {Développement d'un site commercial pour une entreprise fictive (rédaction des specs, gestion des risques, planning, implem, \ldots)}
+  \entry
+  {06 - 12 2016}
+  {Suggest}
+  {NodeJS, Sails, Angular2, AWS}
+  {Conception et développement d'une application web de partage et de suggestion d'images}
+\end{entrylist}
+
+\subsection{Perso}
+
+\begin{entrylist}
+  \entry
+  {01 - 01 2017}
+  {CardsAgaintsHumanity}
+  {NodeJS, React, Redux, SocketIO}
+  {Jeu de cartes au format web}
+  \entry
+  {2012 - 2017}
+  {Karmacreep}
+  {PHP, Ruby, Python, NodeJS, Angular, et plus\ldots}
+  {Book d'une photographe au format web (projet "sandbox" réalisé plusieurs fois dans le but d'apprendre une technologie spécifique)}
+\end{entrylist}
+
+\section{Centres d'intérêts}
+
+\begin{itemize}[leftmargin=2.15cm]
+    \item[\textbf{Musique}] Piano ; Basse ; MAO. Participation à plusieurs groupes de musique, autant au piano qu'à la basse ; créations solo sur ordinateur
+    \item[\textbf{Sports}] Gymnastique ; Badminton ; Voile.
+    \item[\textbf{Magie}] Cartes ; Cordes ; Pièces ; Anneaux\ldots Membre de la Fédération Française des Artistes Prestidigitateurs et du Cercle Magique Robert Houdin de 
+Normandie.
+\end{itemize}
+
+\end{document}
+
