@@ -25,7 +25,7 @@
 %%%%%%%%%
 
 \RequirePackage[quiet]{fontspec}
-\RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
+\RequirePackage{unicode-math}
 
 \newfontfamily\bodyfont[
   BoldFont=texgyreheros-bold.otf,
@@ -73,6 +73,7 @@
 %      \thinfont #3%
 %    };
   \end{tikzpicture}
+  % \begin{textblock}{3.5}(1, 1)#3\end{textblock}
   \vspace{1.2cm}
 }
 
@@ -98,7 +99,7 @@
 }
 
 \renewcommand{\section}[1]{
-  \par\vspace{.8\parskip}
+  \par\vspace{.2\parskip}
   {%
     \LARGE\headingfont\color{headercolor}%
     \@sectioncolor #1%
@@ -142,14 +143,14 @@
 %%%%%%%%%%%%%%
 
 \RequirePackage[absolute,overlay]{textpos}
-\setlength{\TPHorizModule}{1cm}
-\setlength{\TPVertModule}{1cm}
+\setlength{\TPHorizModule}{1.1cm}
+\setlength{\TPVertModule}{0.5cm}
 \newenvironment{aside}{%
   \let\oldsection\section
   \renewcommand{\section}[1]{
     \par\vspace{2\baselineskip}{\Large\headingfont\color{headercolor} ##1}\vspace{\baselineskip}
   }
-  \begin{textblock}{3.5}(2.2, 3.1)
+  \begin{textblock}{3.5}(1.5, 3.1)
   \begin{flushright}
   \obeycr
 }{%
@@ -164,7 +165,7 @@
 % Other tweaks %
 %%%%%%%%%%%%%%%%
 
-\RequirePackage[left=6.4cm,top=1.3cm,right=1.5cm,bottom=0cm,nohead ,nofoot]{geometry}
+\RequirePackage[left=6.4cm,top=1.3cm,right=1.0cm,bottom=0cm,nohead,nofoot]{geometry}
 \RequirePackage{hyperref}
 
 \usepackage{setspace}
@@ -176,16 +177,16 @@
 
 \header{Nils }{Layet}{Ingénieur EPITA web fullstack}
 
-
 % In the aside, each new line forces a line break
 \begin{aside}
   \includegraphics[width=\linewidth]{profile_center.jpg}
   \section{Contacts}
-    94800 Villejuif
+    75019 Paris
     France
     ~
-    \href{mailto:nils@epita.fr}{nils@epita.fr}
+    \href{mailto:nils.layet@gmail.com}{nils.layet@gmail.com}
     \href{https://nilslayet.com}{https://nilslayet.com}
+    % 07.82.54.80.64
     ~
     \textbf{LinkedIn} \hfill nilslayet
     \textbf{Github} \hfill nilscox
@@ -198,16 +199,17 @@
   \begin{sloppypar}
     \flushleft
     \begin{itemize}
-      \item[\textbf{Front-end}] HTML5 / CSS3, Angular2, React, Redux
-      \item[\textbf{JavaScript}] Node, Express, SocketIO
+      \item[\textbf{Front-end}] HTML5 / CSS3, Angular2, React, Redux, MithrilJS
+      \item[\textbf{JavaScript}] Node, Express, Loopback, SocketIO
       \item[\textbf{BDD}] PostgreSQL, MySQL, Redis
+      \item[\textbf{Mobile}] Java Android, Cordova
       \item[\textbf{DevOps}] Git, Gitlab, CircleCI, Docker, make
       \item[\textbf{Java}] Maven, JEE, SpringMVC, ElasticSearch
-      \item[\textbf{Python}] Django, Flask
+      \item[\textbf{Python}] Django, rest\_framework, Flask
       \item[\textbf{PHP}] Symfony2, Laravel
       \item[\textbf{C / C++}] gcc, gdb, valgrind
     \end{itemize}
-    \end{sloppypar}
+  \end{sloppypar}
 \end{aside}
 
 
@@ -215,7 +217,12 @@
 
 \begin{entrylist}
   \entry
-    {06 - 10 2017}
+    {03 - 12 2017}
+    {CDI : Développeur web fullstack}
+    {Sparted (startup), Paris}
+    {HTML5, CSS3, NodeJS, Loopback 2, MithrilJS, AWS : Développement back-end et front-end d'une application mobile et d'un back office offrant une solution de \emph{micro-learning}}
+  \entry
+    {06 - 10 2016}
     {Projet de fin d'études : Développeur back-end}
     {Watsize (startup), Paris}
     {Java JEE, ElasticSearch : Backend d'un site e-commerce, travail de recherche sur la catégorisation \emph{sémantique} de catalogues produits}
@@ -263,10 +270,10 @@
 
 \begin{entrylist}
   \entry
-  {01 2017}
+  {2017}
   {CardsAgainstHumanity}
-  {NodeJS, React, Redux, SocketIO}
-  {Jeu de cartes au format web}
+  {Django, rest\_framework, React, Redux, SocketIO}
+  {Jeu de cartes au format web et mobile}
   \entry
   {2012 - 2017}
   {Karmacreep}
@@ -305,10 +312,8 @@
 
 \begin{itemize}[leftmargin=2.15cm]
     \item[\textbf{Musique}] Piano ; Basse ; MAO. Participation à plusieurs groupes de musique, autant au piano qu'à la basse ; créations solo sur ordinateur
-    \item[\textbf{Sports}] Gymnastique ; Badminton ; Voile.
-    \item[\textbf{Magie}] Cartes ; Cordes ; Pièces ; Anneaux\ldots Membre de la Fédération Française des Artistes Prestidigitateurs et du Cercle Magique Robert Houdin de 
+    \item[\textbf{Magie}] Cartes ; Cordes ; Pièces ; Anneaux\ldots Membre de la Fédération Française des Artistes Prestidigitateurs et du Cercle Magique Robert Houdin de
 Normandie.
 \end{itemize}
 
 \end{document}
-
