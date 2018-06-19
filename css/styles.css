@@ -90,6 +90,17 @@ aside section.languages .value {
 
 aside section.skills {}
 
+aside section.skills .label {
+  text-align: left;
+  border: 1px solid #CCC;
+  background-color: #DDD;
+  border-left: 0;
+  border-right: 0;
+  line-height: 10px;
+  padding-top: 5px;
+  margin-bottom: 5px;
+}
+
 main {
   flex: 3;
   display: flex;
