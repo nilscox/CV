@@ -134,7 +134,61 @@ main h2 {
   margin-bottom: 5px;
 }
 
-main section.work-experience {}
+main section.jobs {}
+
+main section.jobs .job {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0;
+}
+
+main section.jobs .job-dates {
+  flex: 1;
+  font-size: 0.8em;
+}
+
+main section.jobs .job-dates .job-start {
+
+}
+
+main section.jobs .job-dates .job-end {
+
+}
+
+main section.jobs .job-info {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+}
+
+main section.jobs .job-title {
+  font-weight: bold;
+  color: #222;
+}
+
+main section.jobs .job-location {
+  position: absolute;
+  right: 0;
+  font-size: 0.8em;
+  color: #333;
+}
+
+main section.jobs .job-technos-desc {
+  display: flex;
+  flex-direction: row;
+}
+
+main section.jobs .job-technos {
+  order: 2;
+  width: 140px;
+  padding-left: 5px;
+  border-left: 1px solid #CCC;
+}
+
+main section.jobs .job-description {
+  flex: 1;
+}
 
 main section.cursus {}
 
