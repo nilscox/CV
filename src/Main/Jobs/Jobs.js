@@ -6,7 +6,7 @@ const Jobs = ({ title, jobs }) => (
 
     <h2>{ title }</h2>
 
-    { jobs.map(job => <Entry {...job} />) }
+    { jobs.map(job => <Entry key={`job-${job.title}`} {...job} />) }
 
   </section>
 );

@@ -2,40 +2,15 @@ import * as React from 'react';
 
 import Header from './Header';
 import Jobs from './Jobs';
+import Projects from './Projects';
 
-const Main = ({ id, summary, jobs }) => (
+const Main = ({ id, summary, jobs, projects }) => (
   <main>
 
     <Header {...id} summary={summary} />
-
     <Jobs {...jobs} />
+    <Projects {...projects} />
 
-    <section>
-
-      <h2>Projets</h2>
-
-      A l'EPITA
-
-      08 - 08 2014 42sh C, libpthread
-      Implémentation complète d’un shell POSIX from scratch
-
-      04 - 07 2015 YaKaramel Java JEE, SpringMVC, Hibernate, MySQL
-      Développement d’un site commercial pour une entreprise fictive
-      (rédaction des specs, gestion des risques, planning, implem, …)
-
-      06 - 12 2016 Suggest NodeJS, Sails, Angular2, AWS
-      Conception et développement d’une application web de partage et de
-      suggestion d’images
-
-      Perso
-      2017 - ?? CardsAgainstHumanity Django, rest_framework, React, Redux, SocketIO
-      Jeu de cartes au format web et mobile
-
-      2012 - ?? Karmacreep PHP, Ruby, Python, NodeJS, Angular, et plus…
-      Book d’une photographe au format web (projet ”sandbox” réalisé
-      plusieurs fois pour apprendre à chaque fois une technologie spécifique)
-
-    </section>
     <section>
 
       <h2>Cursus</h2>
