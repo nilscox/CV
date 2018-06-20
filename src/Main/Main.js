@@ -1,111 +1,15 @@
 import * as React from 'react';
 
 import Header from './Header';
+import Jobs from './Jobs';
 
-const Main = ({ id, summary }) => (
+const Main = ({ id, summary, jobs }) => (
   <main>
 
-    <Header {...id} />
+    <Header {...id} summary={summary} />
 
-    { `<!-- ${summary} -->` }
+    <Jobs {...jobs} />
 
-    { /* wrap the hr around a div because we\'re in a flex container */ }
-    <div>
-      <hr />
-    </div>
-
-    <section className="jobs">
-
-      <h2>Expériences professionnelles</h2>
-
-      <div className="job">
-        <div className="job-dates">
-          <span className="job-start">03 2017</span> &mdash;
-          <span className="job-end">08 2018</span>
-        </div>
-        <div className="job-info">
-          <span className="job-title">CDI</span>
-          <span className="job-location">Sparted (startup), Paris</span>
-          <div className="job-technos-desc">
-            <div className="job-technos">HTML5, CSS3, NodeJS, Loopback 2, MithrilJS, AWS</div>
-            <div className="job-description">
-              Développement back-end et front-end d’une application mobile et d’un back office offrant une solution de
-              micro-learning
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="job">
-        <div className="job-dates">
-          <span className="job-start">06</span> &mdash;
-          <span className="job-end">10 2016</span>
-        </div>
-        <div className="job-info">
-          <span className="job-title">Projet de fin d'études</span>
-          <span className="job-location">Watsize (startup), Paris</span>
-          <div className="job-technos-desc">
-            <div className="job-technos">Java JEE, ElasticSearch</div>
-            <div className="job-description">
-              Backend d’un site e-commerce, travail de recherche sur la catégorisation sémantique de catalogues produits
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="job">
-        <div className="job-dates">
-          <span className="job-start">2015</span> &mdash;
-          <span className="job-end">2017</span>
-        </div>
-        <div className="job-info">
-          <span className="job-title">Assistant EPITA</span>
-          <span className="job-location">EPITA, Paris</span>
-          <div className="job-techos-desc">
-            <div className="job-description">
-              Participation à la formation des étudiants de l’EPITA (enseignement du C, C++, SQL, Java, C#)
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="job">
-        <div className="job-dates">
-          <span className="job-start">09</span> &mdash;
-          <span className="job-end">12 2015</span>
-        </div>
-        <div className="job-info">
-          <span className="job-title">Développeur fullstack</span>
-          <span className="job-location">Carizy (startup), Paris</span>
-          <div className="job-technos-desc">
-            <div className="job-technos">PHP, Symfony2</div>
-            <div className="job-description">
-              Développement d’un site de vente de PaP, mise en place d’un processus d’intégration continue
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="job">
-        <div className="job-dates">
-          <span className="job-start">07</span> &mdash;
-          <span className="job-end">08 2014</span>
-        </div>
-        <div className="job-info">
-          <span className="job-title">Développeur android</span>
-          <span className="job-location">Hénoïda (startup), Paris</span>
-          <div className="job-technos-desc">
-            <div className="job-technos">Java, Android</div>
-            <div className="job-description">
-              Développement d’une application Android pour
-              entraîner sa mémoire. PoC et intégration d’un OCR pour les caractères
-              chinois
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </section>
     <section>
 
       <h2>Projets</h2>

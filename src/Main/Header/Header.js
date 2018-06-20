@@ -1,12 +1,30 @@
 import * as React from 'react';
+import './Header.css';
 
-const Header = ({ firstName, nick, lastName }) => (
+const Header = ({ firstName, lastName, nick, summary }) => (
   <header>
+
     <h1>
-      <span className="firstname">{ firstName }</span>
+      <span className="firstname">
+        <span>{ firstName[0] }</span>
+        <span>{ firstName.substr(1) }</span>
+      </span>
+
       { nick && <span className="nick">`{ nick }`</span> }
-      <span className="lastname">{ lastName }</span>
+
+      <span className="lastName">
+        <span>{ lastName[0] }</span>
+        <span>{ lastName.substr(1) }</span>
+      </span>
     </h1>
+
+    { summary && <div className="summary">{`<!-- ${summary} -->`}</div> }
+
+    { /* wrap the hr around a div because we\'re in a flex container */ }
+    <div>
+      <hr />
+    </div>
+
   </header>
 );
 

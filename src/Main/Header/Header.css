@@ -1,0 +1,25 @@
+header {}
+
+header h1 {
+  color: #333;
+}
+
+header h1 .firstname {
+  margin-right: 15px;
+}
+
+header h1 .firstname > *:first-child {
+  color: #CC6600;
+}
+
+header h1 .lastName {
+  margin-left: 15px;
+}
+
+header h1 .lastName > *:first-child {
+  color: #006699;
+}
+
+header .summary {
+  color: #666;
+}
