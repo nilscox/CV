@@ -86,6 +86,9 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      "transform-export-extensions"
     ]
   },
   "eslintConfig": {

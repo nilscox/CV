@@ -1,14 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './CV.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="cv">
+import Aside from './Aside';
+import Main from './Main';
 
-      </div>
-    );
-  }
-}
+const CV = ({ data }) => (
+  <div id="cv">
+    <Aside
+      photo={data.photo}
+      contact={data.contact}
+      languages={data.languages}
+      skills={data.skills}
+    />
+    <Main />
+  </div>
+);
 
-export default App;
+export default CV;

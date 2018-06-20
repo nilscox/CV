@@ -4,5 +4,5 @@ import './reset.css';
 import CV from './CV';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<CV />, document.getElementById('root'));
+ReactDOM.render(<CV data={require('./data.json')} />, document.getElementById('root'));
 registerServiceWorker();
