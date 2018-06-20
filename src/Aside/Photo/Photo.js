@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const Photo = () => (
   <section className="photo">
-    <img src="img/profile_center.jpx" alt="nils" />
+    <img src="photo.jpg" alt="nils" />
   </section>
 );
 

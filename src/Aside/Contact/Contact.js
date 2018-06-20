@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './Contact.css';
 
 const Address = ({ firstLine, secondLine }) => (
   <div className="address">

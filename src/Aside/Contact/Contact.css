@@ -1,0 +1,20 @@
+.contact > div {
+  margin-top: 10px;
+}
+
+.contact .web i {
+  margin-left: 10px;
+}
+
+.contact .social i {
+  margin-right: 15px;
+}
+
+.contact .social .social-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.contact .social .value {
+  flex: 1;
+}

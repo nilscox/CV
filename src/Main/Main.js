@@ -1,16 +1,15 @@
 import * as React from 'react';
 
-const Main = () => (
+import Header from './Header';
+
+const Main = ({ id, summary }) => (
   <main>
 
-    <header>
-      <h1>
-        <span className="firstname">Nils</span>
-        <span className="lastname">Layet</span>
-      </h1>
-    </header>
+    <Header {...id} />
 
-    {'<!-- wrap the hr around a div because we\'re in a flex container -->'}
+    { `<!-- ${summary} -->` }
+
+    { /* wrap the hr around a div because we\'re in a flex container */ }
     <div>
       <hr />
     </div>

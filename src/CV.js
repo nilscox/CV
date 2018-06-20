@@ -6,13 +6,20 @@ import Main from './Main';
 
 const CV = ({ data }) => (
   <div id="cv">
-    <Aside
-      photo={data.photo}
-      contact={data.contact}
-      languages={data.languages}
-      skills={data.skills}
-    />
-    <Main />
+
+    <div id="aside">
+      <Aside
+        photo={data.photo}
+        contact={data.contact}
+        languages={data.languages}
+        skills={data.skills}
+      />
+    </div>
+
+    <div id="main">
+      <Main {...data} />
+    </div>
+
   </div>
 );
 
