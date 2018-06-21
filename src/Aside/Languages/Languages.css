@@ -1,0 +1,8 @@
+.languages .lang {
+  display: flex;
+  flex-direction: row;
+}
+
+.languages .value {
+  flex: 1;
+}

@@ -6,3 +6,13 @@ aside {
   padding: 20px;
   text-align: right;
 }
+
+aside section {
+  margin-top: 30px;
+}
+
+aside section h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}

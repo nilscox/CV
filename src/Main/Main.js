@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './Main.css';
 
 import Header from './Header';
 import Jobs from './Jobs';

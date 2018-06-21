@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './Languages.css';
 
 const Lang = ({ label, value }) => (
   <div className="lang">

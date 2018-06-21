@@ -1,0 +1,19 @@
+.skills .skill {
+  margin-bottom: 10px;
+}
+
+.skills .skill .label {
+  text-align: left;
+  border: 1px solid #CCC;
+  background-color: #DDD;
+  border-left: 0;
+  border-right: 0;
+  line-height: 13px;
+  padding-top: 2px;
+  padding-left: 5px;
+  margin-bottom: 5px;
+}
+
+.skills .skill .values {
+  line-height: 15px;
+}
