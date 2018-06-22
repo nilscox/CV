@@ -21,19 +21,27 @@ const Web = ({ email, site }) => (
   </div>
 );
 
-const Social = ({ social }) => (
-  <div className="social">
 
-  { social.map(item => (
-    <div key={`social-${item.label}`} className="social-item">
-      <i className={`${item.icon}`}></i>
-      <div className="label">{ item.label }</div>
-      <div className="value">{ item.value }</div>
+const Social = ({ social }) => {
+  const items = ['LinkedIn', 'Github', 'Bitbucket'];
+  const iconsClassNames = {
+    'LinkedIn': 'fab fa-linkedin',
+    'Github': 'fab fa-github',
+    'Bitbucket': 'fab fa-bitbucket',
+  };
+
+  return (
+    <div className="social">
+      { items.map(item => (
+        <div key={`social-${item}`} className="social-item">
+          <i className={`${iconsClassNames[item]}`}></i>
+          <div className="label">{ item }</div>
+          <div className="value">{ social[item] }</div>
+        </div>
+      )) }
     </div>
-  )) }
-
-  </div>
-);
+  );
+}
 
 const Contact = ({ title, address, web, social }) => (
   <section className="contact">

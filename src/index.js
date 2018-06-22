@@ -4,5 +4,10 @@ import './reset.css';
 import CV from './CV';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<CV data={require('./data.json')} />, document.getElementById('root'));
+const props = {
+  labels: require('./labels'),
+  data: require('./data'),
+};
+
+ReactDOM.render(<CV {...props} />, document.getElementById('root'));
 registerServiceWorker();

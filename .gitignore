@@ -8,4 +8,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 src/data.json
+src/labels.json
 public/*.jpg

@@ -8,13 +8,13 @@ const Lang = ({ label, value }) => (
   </div>
 );
 
-const Languages = ({ title, langs }) => (
+const Languages = ({ title, languages }) => (
   <section className="languages">
 
     <h2>{ title }</h2>
 
-    { langs.map(lang => (
-        <Lang key={`lang-${lang.label}`} label={lang.label} value={lang.value} />
+    { Object.keys(languages).map(lang => (
+        <Lang key={`lang-${lang}`} label={lang} value={languages[lang]} />
     )) }
 
   </section>

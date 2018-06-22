@@ -2,19 +2,17 @@ import * as React from 'react';
 import './Main.css';
 
 import Header from './Header';
-import Jobs from './Jobs';
-import Projects from './Projects';
-import Education from './Education';
+import Section from './Section';
 import Interests from './Interests';
 
-const Main = ({ id, summary, jobs, projects, education, interests }) => (
+const Main = ({ labels, id, summary, jobs, projects, education, interests }) => (
   <main>
 
     <Header {...id} summary={summary} />
-    <Jobs {...jobs} />
-    <Projects {...projects} />
-    <Education {...education} />
-    <Interests {...interests} />
+    <Section title={labels.jobs} entries={jobs} />
+    <Section subsections={projects} />
+    <Section title={labels.education} entries={education} />
+    <Interests title={labels.interests} interests={interests} />
 
   </main>
 );

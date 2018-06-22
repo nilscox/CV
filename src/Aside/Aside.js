@@ -6,12 +6,12 @@ import Contact from './Contact';
 import Languages from './Languages';
 import Skills from './Skills';
 
-const Aside = ({ photo, contact, languages, skills }) => (
+const Aside = ({ labels, photo, contact, languages, skills }) => (
   <aside>
-    <Photo photo={photo} />
-    <Contact {...contact} />
-    <Languages {...languages} />
-    <Skills skills={skills} />
+    <Photo {...photo} />
+    <Contact title={labels.contact} {...contact} />
+    <Languages title={labels.languages} languages={languages} />
+    <Skills title={labels.skills} skills={skills} />
   </aside>
 );
 

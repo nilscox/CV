@@ -16,7 +16,9 @@ const Skills = ({ skills }) => (
 
     <h2>Skills</h2>
 
-    { skills.map(skill => <Skill key={`skill-${skill.label}`} {...skill} />) }
+    { Object.keys(skills).map(skill => (
+      <Skill key={`skill-${skill}`} label={skill} values={skills[skill]} />
+    )) }
 
   </section>
 );

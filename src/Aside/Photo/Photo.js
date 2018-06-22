@@ -1,9 +1,9 @@
 import * as React from 'react';
 import './Photo.css';
 
-const Photo = () => (
+const Photo = ({ path, alt }) => (
   <section className="photo">
-    <img src="photo.jpg" alt="nils" />
+    <img src={path} alt={alt} />
   </section>
 );
 
