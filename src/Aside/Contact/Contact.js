@@ -28,7 +28,9 @@ const Social = ({ icons, social }) => (
       <div key={`social-${item}`} className="social-item">
         <i className={`${icons[item]}`}></i>
         <div className="label">{ item }</div>
-        <div className="value">{ social[item] }</div>
+        <a className="value" href={social[item].url} target="_blank" rel="noopener noreferrer">
+          { social[item].value }
+        </a>
       </div>
     )) }
   </div>
