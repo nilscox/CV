@@ -1,6 +1,11 @@
 @font-face {
   font-family: 'Source Code Pro';
-  src: url('/fonts/SourceCodePro-Medium.ttf');
+  src: url('/fonts/SourceCodePro-Semibold.ttf');
+}
+
+@font-face {
+  font-family: 'Cousine';
+  src: url('/fonts/Cousine-Regular.ttf');
 }
 
 #cv {
@@ -10,9 +15,6 @@
   border: 1px solid #CCCCCC;
   border-top: 0;
   border-bottom: 0;
-  font-family: 'Source Code Pro', monospace;
-  font-size: 15px;
-  line-height: 20px;
   display: flex;
   flex-direction: row;
 }

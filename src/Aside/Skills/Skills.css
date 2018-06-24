@@ -1,5 +1,5 @@
 .skills .skill {
-  margin-bottom: 20px;
+  margin: 10px 0;
 }
 
 .skills .skill .label {
@@ -16,4 +16,5 @@
 
 .skills .skill .values {
   line-height: 15px;
+  font-size: 0.9em;
 }

@@ -2,6 +2,9 @@ main {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  font-family: 'Cousine', monospace;
+  font-size: 14px;
+  line-height: 16px;
 }
 
 main header {
@@ -31,7 +34,6 @@ main h3 {
   font-size: 1.1em;
   border-bottom: 1px solid #CCC;
   max-width: 135px;
-  overflow-x: hidden;
   text-overflow: ellipsis;
   margin-top: 10px;
   font-weight: bold;

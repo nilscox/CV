@@ -6,10 +6,16 @@ aside {
   padding: 20px;
   text-align: right;
   height: 100%;
+  font-family: 'Cousine';
+  line-height: 20px;
 }
 
 aside section {
   margin-top: 30px;
+}
+
+aside section:first-child {
+  margin-top: 0;
 }
 
 aside section h2 {
