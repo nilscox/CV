@@ -13,17 +13,8 @@
   font-family: 'Source Code Pro', monospace;
   font-size: 15px;
   line-height: 20px;
-}
-
-#aside {
-  display: inline-block;
-  width: 25%;
-}
-
-#main {
-  display: inline-block;
-  width: 75%;
-  vertical-align: top;
+  display: flex;
+  flex-direction: row;
 }
 
 .label {

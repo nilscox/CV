@@ -5,6 +5,7 @@ aside {
   border-right: 1px solid #DDD;
   padding: 20px;
   text-align: right;
+  height: 100%;
 }
 
 aside section {

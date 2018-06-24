@@ -1,0 +1,19 @@
+.interests .interests-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.interests .interest {
+  border-left: 1px solid #CCC;
+  padding: 0 5px;
+}
+
+.interests .interest .items {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+.interests .interest .description {
+  font-size: 0.8em;
+  line-height: 14px;
+}
