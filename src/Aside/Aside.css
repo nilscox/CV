@@ -1,13 +1,18 @@
 aside {
   display: flex;
   flex-direction: column;
-  background-color: #EEEEEE;
-  border-right: 1px solid #DDD;
+  height: 100%;
   padding: 20px;
   text-align: right;
-  height: 100%;
   font-family: 'Cousine';
+  font-size: 1.15em;
   line-height: 20px;
+  background-color: #EEEEEE;
+  border-right: 1px solid #DDD;
+}
+
+aside .label {
+  font-size: 1.2em;
 }
 
 aside section {
@@ -19,8 +24,8 @@ aside section:first-child {
 }
 
 aside section h2 {
-  font-size: 22px;
-  font-weight: bold;
   margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.7em;
   color: #CC6600;
 }

@@ -3,19 +3,7 @@ main {
   flex-direction: column;
   padding: 20px;
   font-family: 'Cousine', monospace;
-  font-size: 14px;
   line-height: 16px;
-}
-
-main header {
-  margin-top: 15px;
-}
-
-main header h1 {
-  font-size: 2.5em;
-  text-align: center;
-  margin: 15px 0;
-  padding: 5px 0;
 }
 
 main hr {
@@ -23,20 +11,20 @@ main hr {
 }
 
 main h2 {
-  font-size: 1.5em;
-  font-weight: bold;
   margin-top: 15px;
   margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 1.7em;
   color: #006699;
 }
 
 main h3 {
-  font-size: 1.1em;
-  border-bottom: 1px solid #CCC;
   max-width: 135px;
+  margin-top: 15px;
   text-overflow: ellipsis;
-  margin-top: 10px;
-  font-weight: bold;
   text-indent: 10px;
+  font-weight: bold;
+  font-size: 1.3em;
+  border-bottom: 1px solid #CCC;
   color: #666666;
 }

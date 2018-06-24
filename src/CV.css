@@ -8,6 +8,10 @@
   src: url('/fonts/Cousine-Regular.ttf');
 }
 
+html {
+  font-size: 75%;
+}
+
 #cv {
   width: 1000px;
   margin: auto;
@@ -19,9 +23,16 @@
   flex-direction: row;
 }
 
+#cv > aside {
+  flex: 1;
+}
+
+#cv > main {
+  flex: 3;
+}
+
 .label {
   font-weight: bold;
-  font-size: 1.1em;
   text-transform: uppercase;
   color: #333;
 }

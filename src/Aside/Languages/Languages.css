@@ -1,7 +1,3 @@
-.languages .label {
-  color: #666;
-}
-
 .languages .lang {
   display: flex;
   flex-direction: row;
