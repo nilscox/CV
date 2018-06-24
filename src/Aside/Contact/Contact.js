@@ -8,49 +8,40 @@ const Address = ({ firstLine, secondLine }) => (
   </div>
 );
 
-const Web = ({ email, site }) => (
+const Web = ({ icons, email, site }) => (
   <div className="web">
     <div>
       <a href={`mailto:${email}`}>{ email }</a>
-      <i className="fas fa-envelope"></i>
+      <i className={icons['email']}></i>
     </div>
     <div>
       <a href="https://nils.cx" target="_blank" rel="noopener noreferrer">{ site }</a>
-      <i className="fas fa-globe"></i>
+      <i className={icons['website']}></i>
     </div>
   </div>
 );
 
 
-const Social = ({ social }) => {
-  const items = ['LinkedIn', 'Github', 'Bitbucket'];
-  const iconsClassNames = {
-    'LinkedIn': 'fab fa-linkedin',
-    'Github': 'fab fa-github',
-    'Bitbucket': 'fab fa-bitbucket',
-  };
+const Social = ({ icons, social }) => (
+  <div className="social">
+    { Object.keys(social).map(item => (
+      <div key={`social-${item}`} className="social-item">
+        <i className={`${icons[item]}`}></i>
+        <div className="label">{ item }</div>
+        <div className="value">{ social[item] }</div>
+      </div>
+    )) }
+  </div>
+);
 
-  return (
-    <div className="social">
-      { items.map(item => (
-        <div key={`social-${item}`} className="social-item">
-          <i className={`${iconsClassNames[item]}`}></i>
-          <div className="label">{ item }</div>
-          <div className="value">{ social[item] }</div>
-        </div>
-      )) }
-    </div>
-  );
-}
-
-const Contact = ({ title, address, web, social }) => (
+const Contact = ({ title, icons, address, web, social }) => (
   <section className="contact">
 
     <h2>{ title }</h2>
 
     <Address {...address} />
-    <Web {...web} />
-    <Social social={social} />
+    <Web icons={icons} {...web} />
+    <Social icons={icons} social={social} />
 
   </section>
 );

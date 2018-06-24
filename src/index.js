@@ -7,6 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 const props = {
   labels: require('./labels'),
   data: require('./data'),
+  icons: require('./icons'),
 };
 
 ReactDOM.render(<CV {...props} />, document.getElementById('root'));

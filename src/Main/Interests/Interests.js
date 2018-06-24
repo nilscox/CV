@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './Interests.css';
 
 const Interest = ({ title, items, description }) => (
   <div className="interest">
@@ -6,7 +7,7 @@ const Interest = ({ title, items, description }) => (
     <h3>{ title }</h3>
 
     { items.map(item => (
-      <span className="interest-item">{ item }</span>
+      <span key={`interest-item-${item}`} className="interest-item">{ item }</span>
     )) }
 
   </div>
@@ -19,6 +20,7 @@ const Interests = ({ title, interests }) => (
 
     { Object.keys(interests).map(interest => (
       <Interest
+        key={`interest-${interest}`}
         title={interest}
         items={interests[interest].items}
         description={interests[interest].description}

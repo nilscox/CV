@@ -1,11 +1,17 @@
+@font-face {
+  font-family: 'Source Code Pro';
+  src: url('/fonts/SourceCodePro-Medium.ttf');
+}
+
 #cv {
-  width: 930px;
+  width: 1000px;
   margin: auto;
   background-color: #F9F9F9;
   border: 1px solid #CCCCCC;
   border-top: 0;
   border-bottom: 0;
-  font-family: monospace;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 15px;
   line-height: 20px;
 }
 
@@ -25,10 +31,6 @@
   font-size: 1.1em;
   text-transform: uppercase;
   color: #333;
-}
-
-h1, h2 {
-  color: #111;
 }
 
 a {

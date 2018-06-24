@@ -3,14 +3,15 @@
   display: flex;
   flex-direction: row;
   margin: 10px 0;
+  border-bottom: 1px dotted #DDD;
 }
 
 .entry .dates {
-  flex: 1;
+  width: 90px;
 }
 
 .entry .info {
-  flex: 4;
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
@@ -31,7 +32,7 @@
   float: right;
   font-size: 0.8em;
   text-align: right;
-  color: #333;
+  color: #666;
 }
 
 .entry .details {
@@ -41,11 +42,15 @@
 
 .entry .technos {
   order: 2;
-  width: 140px;
+  width: 160px;
+  margin-left: 5px;
   padding-left: 5px;
   border-left: 1px solid #CCC;
 }
 
 .entry .description {
   flex: 1;
+  line-height: 16px;
+  font-size: 0.9em;
+  margin-top: 3px;
 }

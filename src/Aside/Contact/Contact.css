@@ -1,5 +1,13 @@
+.contact .label {
+  color: #666;
+}
+
 .contact > div {
-  margin-top: 10px;
+  margin-top: 20px;
+}
+
+.contact > div:nth-child(2) {
+  margin-top: 0;
 }
 
 .contact .web i {

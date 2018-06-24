@@ -1,18 +1,20 @@
 import * as React from 'react';
 import './Entry.css';
 
-const Entry = ({ startDate, endDate, title, description, technos, location }) => (
+const Entry = ({ startDate, endDate, title, url, description, technos, location }) => (
   <div className="entry">
 
     <div className="dates">
-      <span className="start">{ startDate }</span> &mdash;
-      <span className="end">{ endDate }</span>
+      { endDate && <div className="end">{ endDate }</div> }
+      { startDate && <div className="start">{ startDate }</div> }
     </div>
 
     <div className="info">
 
       <div className="header">
-        <span className="title">{ title }</span>
+        <span className="title">
+          { url ? <a href={url}>{ title }</a> : title }
+        </span>
         <span className="location">{ location }</span>
       </div>
 

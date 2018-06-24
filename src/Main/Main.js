@@ -10,7 +10,7 @@ const Main = ({ labels, id, summary, jobs, projects, education, interests }) => 
 
     <Header {...id} summary={summary} />
     <Section title={labels.jobs} entries={jobs} />
-    <Section subsections={projects} />
+    <Section title={labels.projects} subsections={projects} />
     <Section title={labels.education} entries={education} />
     <Interests title={labels.interests} interests={interests} />
 

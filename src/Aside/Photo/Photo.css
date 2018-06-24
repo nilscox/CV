@@ -1,5 +1,8 @@
 .photo {
-  height: 280px;
   margin-bottom: 15px;
   opacity: 0.82;
+}
+
+.photo img {
+  width: 100%;
 }
