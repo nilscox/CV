@@ -19,9 +19,8 @@ const lang =
   || 'en';
 
 const props = {
-  labels: require(`./data/${lang}/labels`),
+  meta: require(`./data/${lang}/meta`),
   data: require(`./data/${lang}/cv`),
-  icons: require(`./data/${lang}/icons`),
 };
 
 ReactDOM.render(<CV {...props} />, document.getElementById('root'));

@@ -4,20 +4,20 @@ import './CV.css';
 import Aside from './Aside';
 import Main from './Main';
 
-const CV = ({ labels, icons, data }) => (
+const CV = ({ meta, data }) => (
   <div id="cv">
 
     <Aside
-      labels={labels}
-      icons={icons}
-      photo={data.photo}
+      labels={meta.labels}
+      icons={meta.icons}
+      photo={meta.photo}
       contact={data.contact}
       languages={data.languages}
       skills={data.skills}
     />
 
     <Main
-      labels={labels}
+      labels={meta.labels}
       id={data.id}
       summary={data.summary}
       jobs={data.jobs}
