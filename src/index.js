@@ -13,8 +13,8 @@ const params = queryString.split('&').reduce((o, a) => {
 }, {});
 
 const lang =
-  process.env.REACT_APP_LANG
-  || params.lang
+  params.lang
+  || process.env.REACT_APP_LANG
   || 'en';
 
 const props = {

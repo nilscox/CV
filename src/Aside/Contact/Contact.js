@@ -4,24 +4,21 @@ import './Contact.css';
 const Address = ({ firstLine, secondLine }) => (
   <div className="address">
     <div>{ firstLine }</div>
-    <div>{ secondLine }</div>
+    { secondLine && <div>{ secondLine }</div> }
   </div>
 );
 
 const Web = ({ icons, tel, email, site }) => (
   <div className="web">
-    <div className="tel">
-      { tel }
-      <i className={icons['tel']}></i>
-    </div>
-    <div className="email">
-      <a href={`mailto:${email}`}>{ email }</a>
-      <i className={icons['email']}></i>
-    </div>
-    <div className="site">
-      <a href="https://nils.cx" target="_blank" rel="noopener noreferrer">{ site }</a>
-      <i className={icons['website']}></i>
-    </div>
+    <a href={ `tel:${tel.replace(/\(0\)| /g, '')}` } target="_blank" rel="noopener noreferrer" className="tel">
+      { tel } <i className={icons['tel']}></i>
+    </a>
+    <a href={`mailto:${email}`} target="_blank" rel="noopener noreferrer" className="email">
+      { email } <i className={icons['email']}></i>
+    </a>
+    <a href={site} target="_blank" rel="noopener noreferrer" className="site">
+      { site } <i className={icons['website']}></i>
+    </a>
   </div>
 );
 
@@ -29,13 +26,13 @@ const Web = ({ icons, tel, email, site }) => (
 const Social = ({ icons, social }) => (
   <div className="social">
     { Object.keys(social).map(item => (
-      <div key={`social-${item}`} className="social-item">
+      <a key={`social-${item}`} className="social-item" href={social[item].url} target="_blank" rel="noopener noreferrer">
         <i className={`${icons[item]}`}></i>
         <div className="label">{ item }</div>
-        <a className="value" href={social[item].url} target="_blank" rel="noopener noreferrer">
+        <div className="value">
           { social[item].value }
-        </a>
-      </div>
+        </div>
+      </a>
     )) }
   </div>
 );
