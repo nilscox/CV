@@ -2,6 +2,7 @@ aside {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  padding-bottom: 0;
   text-align: right;
   font-family: 'Cousine';
   font-size: 115%;
