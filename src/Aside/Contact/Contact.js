@@ -8,13 +8,17 @@ const Address = ({ firstLine, secondLine }) => (
   </div>
 );
 
-const Web = ({ icons, email, site }) => (
+const Web = ({ icons, tel, email, site }) => (
   <div className="web">
-    <div>
+    <div className="tel">
+      { tel }
+      <i className={icons['tel']}></i>
+    </div>
+    <div className="email">
       <a href={`mailto:${email}`}>{ email }</a>
       <i className={icons['email']}></i>
     </div>
-    <div>
+    <div className="site">
       <a href="https://nils.cx" target="_blank" rel="noopener noreferrer">{ site }</a>
       <i className={icons['website']}></i>
     </div>
@@ -36,13 +40,13 @@ const Social = ({ icons, social }) => (
   </div>
 );
 
-const Contact = ({ title, icons, address, web, social }) => (
+const Contact = ({ title, icons, address, tel, email, site, social }) => (
   <section className="contact">
 
     <h2>{ title }</h2>
 
     <Address {...address} />
-    <Web icons={icons} {...web} />
+    <Web icons={icons} tel={tel} email={email} site={site} />
     <Social icons={icons} social={social} />
 
   </section>

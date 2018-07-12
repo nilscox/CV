@@ -13,10 +13,10 @@ const Entry = ({ startDate, endDate, title, url, description, technos, location 
 
       <div className="header">
         <span className="title">
-          { url && !location ? <a href={url}>{ title }</a> : title }
+          { url && !location ? <a href={url} target="_blank">{ title }</a> : title }
         </span>
         <span className="location">
-          { url ? <a href={url}>{ location }</a> : location }
+          { url ? <a href={url} target="_blank">{ location }</a> : location }
         </span>
       </div>
 

@@ -17,22 +17,21 @@ const Name = ({ first, last, nick }) => (
   </h1>
 );
 
-const Summary = ({ summary }) => (
-  summary && <div className="summary">{`<!-- ${summary} -->`}</div>
+const Summary = ({ summary, cvUrl }) => (
+  summary && (cvUrl
+    ? <a href={cvUrl}><div className="summary">{`<!-- ${summary} -->`}</div></a>
+    : <div className="summary">{`<!-- ${summary} -->`}</div>
+  )
 );
 
 /* wrap the hr around a div because we\'re in a flex container */
-const Hr = () => (
-  <div>
-    <hr />
-  </div>
-);
+const Hr = () => <div><hr /></div>;
 
-const Header = ({ firstName, lastName, nick, summary }) => (
+const Header = ({ firstName, lastName, nick, summary, cvUrl }) => (
   <header>
 
     <Name first={firstName} last={lastName} nick={nick} />
-    <Summary summary={summary} />
+    <Summary summary={summary} cvUrl={cvUrl} />
     <Hr />
 
   </header>

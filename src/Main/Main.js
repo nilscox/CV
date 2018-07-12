@@ -5,10 +5,10 @@ import Header from './Header';
 import Section from './Section';
 import Interests from './Interests';
 
-const Main = ({ labels, id, summary, jobs, projects, education, interests }) => (
+const Main = ({ labels, id, summary, cvUrl, jobs, projects, education, interests }) => (
   <main>
 
-    <Header {...id} summary={summary} />
+    <Header {...id} summary={summary} cvUrl={cvUrl} />
     <Section title={labels.jobs} entries={jobs} />
     <Section title={labels.projects} subsections={projects} />
     <Section title={labels.education} entries={education} />

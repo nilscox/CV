@@ -18,6 +18,7 @@ const CV = ({ meta, data }) => (
 
     <Main
       labels={meta.labels}
+      cvUrl={data.cvUrl}
       id={data.id}
       summary={data.summary}
       jobs={data.jobs}
