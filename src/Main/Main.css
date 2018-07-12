@@ -14,7 +14,7 @@ main h2 {
   margin-top: 15px;
   margin-bottom: 5px;
   font-weight: bold;
-  font-size: 1.7em;
+  font-size: 170%;
   color: #006699;
 }
 
@@ -24,7 +24,7 @@ main h3 {
   text-overflow: ellipsis;
   text-indent: 10px;
   font-weight: bold;
-  font-size: 1.3em;
+  font-size: 120%;
   border-bottom: 1px solid #CCC;
   color: #666666;
 }

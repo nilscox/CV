@@ -11,10 +11,10 @@ const Skill = ({ label, values }) => (
   </div>
 );
 
-const Skills = ({ skills }) => (
+const Skills = ({ title, skills }) => (
   <section className="skills">
 
-    <h2>Skills</h2>
+    <h2>{ title }</h2>
 
     { Object.keys(skills).map(skill => (
       <Skill key={`skill-${skill}`} label={skill} values={skills[skill]} />

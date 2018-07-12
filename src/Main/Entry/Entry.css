@@ -26,14 +26,14 @@
 
 .entry .header .title {
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: 110%;
   color: #222;
 }
 
 .entry .location {
   float: right;
   text-align: right;
-  font-size: 0.9em;
+  font-size: 90%;
   color: #666;
 }
 
@@ -44,11 +44,12 @@
 
 .entry .technos {
   order: 2;
-  width: 160px;
+  width: 165px;
   margin-top: 5px;
   margin-left: 5px;
   padding-left: 5px;
   border-left: 1px solid #CCC;
+  font-size: 95%;
 }
 
 .entry .description {

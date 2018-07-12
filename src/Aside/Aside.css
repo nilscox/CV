@@ -4,14 +4,14 @@ aside {
   padding: 20px;
   text-align: right;
   font-family: 'Cousine';
-  font-size: 1.15em;
+  font-size: 115%;
   line-height: 20px;
   background-color: #EEEEEE;
   border-right: 1px solid #DDD;
 }
 
 aside .label {
-  font-size: 1.2em;
+  font-size: 120%;
 }
 
 aside section {
@@ -25,6 +25,6 @@ aside section:first-child {
 aside section h2 {
   margin-bottom: 10px;
   font-weight: bold;
-  font-size: 1.7em;
+  font-size: 140%;
   color: #CC6600;
 }

@@ -7,7 +7,7 @@ header h1 {
   padding: 5px 0;
   text-align: center;
   font-family: 'Source Code Pro', monospace;
-  font-size: 3em;
+  font-size: 300%;
   color: #333;
 }
 
@@ -29,6 +29,6 @@ header h1 .lastName > *:first-child {
 
 header .summary {
   text-align: right;
-  font-size: 0.9em;
+  font-size: 85%;
   color: #666;
 }
