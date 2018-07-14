@@ -10,18 +10,17 @@ const Address = ({ firstLine, secondLine }) => (
 
 const Web = ({ icons, tel, email, site }) => (
   <div className="web">
-    <a href={ `tel:${tel.replace(/\(0\)| /g, '')}` } target="_blank" rel="noopener noreferrer" className="tel">
+    { tel && <a href={ `tel:${tel.replace(/\(0\)| /g, '')}` } target="_blank" rel="noopener noreferrer" className="tel">
       { tel } <i className={icons['tel']}></i>
-    </a>
-    <a href={`mailto:${email}`} target="_blank" rel="noopener noreferrer" className="email">
+    </a> }
+    { email && <a href={`mailto:${email}`} target="_blank" rel="noopener noreferrer" className="email">
       { email } <i className={icons['email']}></i>
-    </a>
-    <a href={site} target="_blank" rel="noopener noreferrer" className="site">
+    </a> }
+    { site && <a href={site} target="_blank" rel="noopener noreferrer" className="site">
       { site } <i className={icons['website']}></i>
-    </a>
+    </a> }
   </div>
 );
-
 
 const Social = ({ icons, social }) => (
   <div className="social">
