@@ -1,19 +1,3 @@
-@font-face {
-  font-family: 'Source Code Pro';
-  src: url('/fonts/SourceCodePro-Semibold.ttf');
-}
-
-@font-face {
-  font-family: 'Cousine';
-  src: url('/fonts/Cousine-Regular.ttf');
-}
-
-@font-face {
-  font-family: 'Cousine';
-  font-weight: bold;
-  src: url('/fonts/Cousine-Bold.ttf');
-}
-
 html {
   font-size: 12px;
 }
