@@ -48,7 +48,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "data:public": "rm -f src/data && ln -s ../data/public src/data",
+    "data:full": "rm -f src/data && ln -s ../data/full src/data"
   },
   "jest": {
     "collectCoverageFrom": [
