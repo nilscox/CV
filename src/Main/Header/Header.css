@@ -19,6 +19,10 @@ header h1 .firstname > *:first-child {
   color: #CC6600;
 }
 
+header h1 .nick {
+  color: #666666;
+}
+
 header h1 .lastName {
   margin-left: 15px;
 }
