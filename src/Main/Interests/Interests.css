@@ -9,9 +9,10 @@
 }
 
 .interests .interest .items {
-  margin: 10px 0;
+  margin: 8px 0;
 }
 
 .interests .interest .description {
-  line-height: 14px;
+  line-height: 12px;
+  font-size: 95%;
 }
