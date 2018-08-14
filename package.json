@@ -51,7 +51,9 @@
     "test": "node scripts/test.js --env=jsdom",
     "data:en": "rm -rf src/data && cp -r data/en src/data",
     "data:fr": "rm -rf src/data && cp -r data/fr src/data",
-    "data:public": "node scripts/cv-public.js --file=src/data/cv.json"
+    "data:public": "node scripts/cv-public.js --file=src/data/cv.json",
+    "pdf": "wkhtmltopdf --print-media-type --title 'CV - Nils Layet' 'build/index.html' 'CV-Nils-Layet.json'",
+    "dist": "./dist.sh"
   },
   "jest": {
     "collectCoverageFrom": [
