@@ -1,8 +1,7 @@
 .photo {
-  margin-bottom: 15px;
   opacity: 0.82;
 }
 
 .photo img {
-  width: 100%;
+  max-width: 100%;
 }

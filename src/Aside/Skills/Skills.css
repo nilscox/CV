@@ -1,5 +1,5 @@
 .skills .skill {
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 .skills .skill .label {
@@ -12,6 +12,12 @@
   border-left: 0;
   border-right: 0;
   background-color: #DDD;
+}
+
+@media print {
+  .skills .skill .label {
+    background-color: #F0F0F0;
+  }
 }
 
 .skills .skill .values {

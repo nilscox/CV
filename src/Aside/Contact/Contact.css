@@ -1,9 +1,13 @@
 .contact > div {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .contact > div:nth-child(2) {
   margin-top: 0;
+}
+
+.contact .web a {
+  display: block;
 }
 
 .contact .web i {

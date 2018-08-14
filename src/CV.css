@@ -1,24 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
-  font-size: 12px;
+  font-size: 10px;
 }
 
 #cv {
-  width: 1000px;
-  margin: auto;
-  background-color: #F9F9F9;
-  border: 1px solid #CCCCCC;
-  border-top: 0;
-  border-bottom: 0;
-  display: flex;
-  flex-direction: row;
+  position: relative;
+  height: 100%;
+}
+
+#cv > aside, #cv > main {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  padding: 10px 10px 0;
 }
 
 #cv > aside {
-  flex: 1;
+  width: 200px;
+  background-color: #EEEEEE;
+  border-right: 1px solid #CCCCCC;
 }
 
 #cv > main {
-  flex: 3;
+  margin-left: 200px;
+  background-color: #F9F9F9;
+}
+
+@media print {
+  #cv > aside, #cv main {
+    background-color: transparent;
+  }
+
+  #cv > aside {
+    border-color: #EEEEEE;
+  }
 }
 
 .label {

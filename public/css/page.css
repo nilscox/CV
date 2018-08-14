@@ -1,0 +1,25 @@
+body {
+  background: #CCCCCC;
+  margin: 10px 0;
+}
+
+page {
+  background: #FFFFFF;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+page[size="A4"] {
+  width: 21cm;
+  height: 29.7cm;
+}
+
+@media print {
+  body, page {
+    margin: 0;
+    box-shadow: 0;
+  }
+}
