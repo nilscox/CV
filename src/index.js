@@ -8,5 +8,7 @@ const props = {
   data: require(`./data/cv`),
 };
 
+console.log('Hello! If you prefer, this is my CV in JS (:', props.data);
+
 ReactDOM.render(<CV {...props} />, document.getElementById('root'));
 registerServiceWorker();
