@@ -4,7 +4,11 @@ import Entry from '../Entry';
 export const SubSection = ({ title, entries }) => (
   <div className="subsection">
     <h3>{ title }</h3>
-    { entries.map(entry => <Entry key={`subsection-entry-${entry.title}`} {...entry} />) }
+    { entries.map(entry => (
+      <Entry
+        key={`subsection-entry-${entry.title}-${entry.location}`}
+        {...entry} />
+    )) }
   </div>
 );
 
@@ -23,7 +27,7 @@ const Section = ({ title, subsections, entries }) => (
 
     { entries && entries.map(entry => (
       <Entry
-        key={`section-entry-${entry.title}`}
+        key={`section-entry-${entry.title}-${entry.location}`}
         {...entry}
       />
     )) }
