@@ -6,8 +6,13 @@
   margin-top: 0;
 }
 
+.contact .address > div {
+  line-height: 16px;
+}
+
 .contact .web a {
   display: block;
+  line-height: 16px;
 }
 
 .contact .web i {
@@ -15,7 +20,7 @@
 }
 
 .contact .social i {
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 .contact .social .social-item {
