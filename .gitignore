@@ -1,9 +1,0 @@
-/node_modules
-/build
-/dist
-/data
-src/data
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
