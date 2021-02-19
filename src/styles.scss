@@ -1,0 +1,60 @@
+@import "./theme";
+
+html {
+  font-size: $fontSize;
+}
+
+body {
+  font-family: $font;
+  line-height: 14px;
+  color: $text1;
+}
+
+@media screen {
+  #cv {
+    width: 210mm;
+    height: 297mm;
+  }
+}
+
+@media screen and (min-width: 210mm) {
+  body {
+    background: $pageBackground;
+  }
+
+  #cv {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin: $medium auto;
+    overflow: hidden;
+  }
+}
+
+@media print {
+  html, body, #cv {
+    height: 100%;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+#cv {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+aside {
+  flex: 2;
+}
+
+main {
+  flex: 7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

@@ -87,7 +87,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
-        { from: "public/favicon.ico", to: "dist" },
+        { from: "public/favicon.ico", to: "" },
       ],
     }),
     new HtmlWebpackPlugin({ template: 'src/index.ejs' }),

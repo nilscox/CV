@@ -1,0 +1,127 @@
+@import '../theme.scss';
+
+aside {
+  background: $asideBackground;
+  padding: $medium;
+  border-right: 1px solid $border;
+
+  @media print {
+    background: $white;
+  }
+
+  img.photo {
+    width: 100%;
+    opacity: 0.86;
+    transition: 500ms filter ease-in;
+    filter: grayscale(100%);
+
+    &:hover {
+      filter: grayscale(0%);
+      transition-delay: 2000ms;
+    }
+  }
+
+  section {
+    text-align: right;
+
+    h3 {
+      margin: $bigger 0 $medium;
+      font-size: $fontSize2;
+      font-weight: bold;
+      color: $color1;
+    }
+  }
+
+  section.contact {
+    svg {
+      color: $icon;
+      vertical-align: middle;
+    }
+
+    .location {
+      margin-bottom: $medium;
+    }
+
+    .phone,
+    .email,
+    .website {
+      line-height: 1.6em;
+
+      svg {
+        margin-left: $big;
+      }
+    }
+
+    .social {
+      margin-top: $medium;
+      line-height: 2em;
+
+      a {
+        display: flex;
+        flex-direction: row;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .icon {
+        font-size: 1.4em;
+        margin-right: $medium;
+      }
+
+      .platform {
+        flex: 1;
+        color: $text2;
+        text-align: left;
+        font-weight: bold;
+      }
+    }
+  }
+
+  section.languages {
+    line-height: 2em;
+
+    & > div {
+      display: flex;
+      flex-direction: row;
+
+      .name {
+        flex: 1;
+        font-size: $fontSize1;
+        color: $text2;
+        text-align: left;
+        font-weight: bold;
+      }
+    }
+  }
+
+  section.skills {
+    .container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .skill {
+        line-height: $lineHeightSkill;
+        margin: 0 $medium;
+
+        &.level-1 {
+          font-size: $fontSizeSkill1;
+        }
+
+        &.level-2 {
+          font-size: $fontSizeSkill2;
+        }
+
+        &.level-3 {
+          font-size: $fontSizeSkill3;
+        }
+      }
+    }
+  }
+
+  section.ambitions .ambition {
+    text-align: left;
+    margin: $big 0;
+  }
+}
