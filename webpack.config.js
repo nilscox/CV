@@ -4,9 +4,11 @@ const { DefinePlugin } = require('webpack');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const { ESBuildPlugin } = require('esbuild-loader')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const {
   NODE_ENV = 'development',
@@ -30,7 +32,9 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.[chunkhash].js',
+    filename: 'main.js',
+    publicPath: '',
+    libraryTarget: 'umd',
   },
   stats: {
     colors: true,
@@ -51,7 +55,7 @@ module.exports = {
       {
         test: /\.(sc|c)ss/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           {
             loader: 'sass-loader',
@@ -90,7 +94,14 @@ module.exports = {
         { from: "public/favicon.ico", to: "" },
       ],
     }),
-    new HtmlWebpackPlugin({ template: 'src/index.ejs' }),
+    new MiniCssExtractPlugin(),
+    dev && new HTMLWebpackPlugin(),
+    prod && new StaticSiteGeneratorPlugin({
+      globals: {
+        self: null,
+        document: null,
+      },
+    }),
     new DefinePlugin({ DATA: data }),
   ].filter(Boolean),
   devServer: {
