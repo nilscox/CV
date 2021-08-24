@@ -54,7 +54,7 @@ const TitleRight = styled.div`
 `;
 
 const DatesContainer = styled.div`
-  min-width: 65px;
+  min-width: 62px;
   color: ${color('muted')};
 
   // fix because the entry title's font size is bigger

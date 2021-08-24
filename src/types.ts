@@ -27,6 +27,7 @@ export type Entry = {
   from: string;
   to?: string;
   duration?: string;
+  date?: string;
   company?: string;
   link?: string;
   location?: string;
