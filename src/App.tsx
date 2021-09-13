@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { css, Global, Theme, ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -69,10 +69,10 @@ export const App: React.FC = () => (
 
 const Routes: React.FC = () => (
   <Switch>
-    <Route exact path="/(fr.html)?">
+    <Route exact path="/(fr)?">
       <Content data={fr} />
     </Route>
-    <Route path="/en.html">
+    <Route path="/en">
       <Content data={en} />
     </Route>
     <Route>
@@ -82,10 +82,16 @@ const Routes: React.FC = () => (
 );
 
 const Content: React.FC<{ data: Data }> = ({ data }) => {
+  const [rendered, setRendered] = useState(false);
+
   useEffect(() => {
-    console.log('This is my resume, literally (:');
-    console.log(en);
-  }, []);
+    if (!rendered) {
+      setRendered(true);
+
+      console.log('This is my resume, literally (:');
+      console.log(data);
+    }
+  }, [data, rendered]);
 
   return (
     <Page>

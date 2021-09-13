@@ -41,7 +41,7 @@ const Photo = styled.img`
   width: 100%;
   opacity: 0.85;
   transition: 1000ms filter ease-out;
-  filter: grayscale(100%) brightness(120%) contrast(130%);
+  filter: grayscale(100%) brightness(110%) contrast(120%);
 
   &:hover {
     filter: grayscale(20%) brightness(110%) contrast(130%);
@@ -50,7 +50,7 @@ const Photo = styled.img`
   }
 
   @media print {
-    filter: grayscale(100%) brightness(130%) contrast(100%);
+    filter: grayscale(100%) brightness(120%) contrast(110%);
     opacity: 1;
   }
 `;

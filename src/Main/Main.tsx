@@ -46,14 +46,11 @@ const Title = styled.h1`
   font-weight: normal;
   font-size: ${fontSize('title')};
   letter-spacing: ${letterSpacing('title')};
-
-  & > * {
-    display: inline-block;
-  }
 `;
 
 const FirstName = styled.span`
   margin-right: ${space(3)};
+  display: inline-block;
 
   &::first-letter {
     color: ${color('orange')};
@@ -61,6 +58,8 @@ const FirstName = styled.span`
 `;
 
 const LastName = styled.span`
+  display: inline-block;
+
   &::first-letter {
     color: ${color('blue')};
   }

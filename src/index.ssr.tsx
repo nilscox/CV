@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ReactDOMServer from 'react-dom/server';
 
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Route } from 'react-router-dom';
 
 import { App } from './App';
 
@@ -12,19 +11,24 @@ type DocumentProps = {
 };
 
 const Document: React.FC<DocumentProps> = ({ path, bundlePath }) => (
-  <html>
-    <head>
-      <title>CV Nils Layet - Déveopeur web passioné</title>
-    </head>
-    <body>
-      <div id="cv">
-        <MemoryRouter initialEntries={[path]}>
+  <MemoryRouter initialEntries={[path]}>
+    <html>
+      <head>
+        <title>
+          <Route exact path="/(fr)?">
+            CV Nils Layet - Développeur TypeScript
+          </Route>
+          <Route path="/en">CV Nils Layet - TypeScript Developer</Route>
+        </title>
+      </head>
+      <body>
+        <div id="cv">
           <App />
-        </MemoryRouter>
-      </div>
-      <script src={bundlePath} />
-    </body>
-  </html>
+        </div>
+        <script src={bundlePath} />
+      </body>
+    </html>
+  </MemoryRouter>
 );
 
 type Locals = {
@@ -41,12 +45,3 @@ export default (locals: Locals) => {
     ReactDOMServer.renderToString(<Document path={locals.path} bundlePath={locals.assets.main} />),
   ].join('\n');
 };
-
-if (document) {
-  ReactDOM.hydrate(
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>,
-    document.getElementById('cv'),
-  );
-}

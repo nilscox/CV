@@ -6,6 +6,10 @@ const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin'
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { HotModuleReplacementPlugin } = require('webpack');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const pkg = require('./package.json');
 
 const { NODE_ENV = 'development', HOST = '0.0.0.0', PORT = '8000' } = process.env;
 
@@ -22,17 +26,13 @@ const esbuildLoader = {
 };
 
 const stylesLoader = {
-  test: /\.(sc|c)ss/,
-  use: [
-    'style-loader',
-    'css-loader',
-    {
-      loader: 'sass-loader',
-      options: {
-        sourceMap: true,
-      },
-    },
-  ],
+  test: /\.css$/,
+  use: ['style-loader', 'css-loader'],
+};
+
+const extractStylesLoader = {
+  test: /\.css$/,
+  use: [MiniCssExtractPlugin.loader, 'css-loader'],
 };
 
 const svgLoader = {
@@ -48,20 +48,26 @@ const fileLoader = {
   },
 };
 
-const rules = [esbuildLoader, stylesLoader, svgLoader, fileLoader];
+const copyStaticPlugin = new CopyWebpackPlugin({
+  patterns: [{ from: 'static' }],
+});
 
 if (NODE_ENV === 'production') {
-  module.exports = {
+  /** @type {import('webpack').Configuration} */
+  const ssrConfig = {
     mode: 'production',
     devtool,
 
     resolve: { extensions },
-    module: { rules },
 
+    module: {
+      rules: [esbuildLoader, extractStylesLoader, svgLoader, fileLoader],
+    },
+
+    target: 'node',
     entry: './src/index.ssr.tsx',
 
     output: {
-      filename: '[name].[contenthash].js',
       path: path.resolve(__dirname, 'dist'),
       publicPath: '/',
       libraryTarget: 'umd',
@@ -69,24 +75,46 @@ if (NODE_ENV === 'production') {
 
     plugins: [
       new CleanWebpackPlugin(),
+      new MiniCssExtractPlugin(),
       new StaticSiteGeneratorPlugin({
-        paths: ['/', '/fr.html', '/en.html'],
-        globals: {
-          self: null,
-          document: null,
+        paths: ['/', '/fr', '/en'],
+        locals: {
+          assets: {
+            main: `/bundle-${pkg.version}.js`,
+          },
         },
       }),
     ],
   };
+
+  /** @type {import('webpack').Configuration} */
+  const browserConfig = {
+    ...ssrConfig,
+    target: 'web',
+    entry: './src/index.tsx',
+
+    output: {
+      filename: `bundle-${pkg.version}.js`,
+      path: path.resolve(__dirname, 'dist'),
+    },
+
+    plugins: [new MiniCssExtractPlugin(), copyStaticPlugin],
+  };
+
+  module.exports = [ssrConfig, browserConfig];
 }
 
 if (NODE_ENV === 'development') {
-  module.exports = {
+  /** @type {import('webpack').Configuration} */
+  const config = {
     mode: 'development',
     devtool,
 
     resolve: { extensions },
-    module: { rules },
+
+    module: {
+      rules: [esbuildLoader, stylesLoader, svgLoader, fileLoader],
+    },
 
     entry: './src/index.dev.tsx',
 
@@ -95,7 +123,12 @@ if (NODE_ENV === 'development') {
       path: path.resolve(__dirname, 'dist'),
     },
 
-    plugins: [new HtmlWebpackPlugin(), new HotModuleReplacementPlugin(), new ReactRefreshWebpackPlugin()],
+    plugins: [
+      new HtmlWebpackPlugin(),
+      new HotModuleReplacementPlugin(),
+      new ReactRefreshWebpackPlugin(),
+      copyStaticPlugin,
+    ],
 
     devServer: {
       host: HOST,
@@ -106,4 +139,6 @@ if (NODE_ENV === 'development') {
       },
     },
   };
+
+  module.exports = config;
 }

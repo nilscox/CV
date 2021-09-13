@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint src",
     "start": "webpack serve",
+    "start:static": "nodemon -w webpack.config.js -x 'yarn build --watch'",
     "build": "NODE_ENV=production webpack"
   },
   "devDependencies": {
@@ -19,6 +20,7 @@
     "@typescript-eslint/eslint-plugin": "^4.29.1",
     "@typescript-eslint/parser": "^4.29.1",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.2.0",
     "esbuild-loader": "^2.15.0",
     "eslint": "^7.32.0",
@@ -27,10 +29,10 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.2",
-    "node-sass": "^6.0.1",
+    "mini-css-extract-plugin": "^2.3.0",
+    "nodemon": "^2.0.12",
     "prettier": "^2.3.2",
     "react-refresh": "^0.10.0",
-    "sass-loader": "^12.1.0",
     "static-site-generator-webpack-plugin": "^3.4.2",
     "style-loader": "^3.2.1",
     "type-fest": "^2.0.0",

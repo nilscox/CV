@@ -10,11 +10,7 @@ export type Contact = {
   };
 };
 
-export type Languages = {
-  french: string;
-  english: string;
-  spanish: string;
-};
+export type Languages = Record<string, string>;
 
 export type Interest = {
   name: string;
@@ -24,7 +20,7 @@ export type Interest = {
 
 export type Entry = {
   name: string;
-  from: string;
+  from?: string;
   to?: string;
   duration?: string;
   date?: string;

@@ -10,7 +10,7 @@ import FlagUS from './flags/us.svg';
 
 export const Flags: React.FC = () => {
   const [hover, setHover] = useState(false);
-  const isEnglish = useRouteMatch('/en.html');
+  const isEnglish = useRouteMatch('/en');
 
   return (
     <Container hover={hover} onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)}>
@@ -43,7 +43,7 @@ const Container = styled.div<{ hover: boolean }>`
   }
 `;
 
-const links = { fr: '/', en: '/en.html' };
+const links = { fr: '/', en: '/en' };
 const languages = { fr: 'Français', en: 'English' };
 const flags = { fr: FlagFR, en: FlagUS };
 
