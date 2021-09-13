@@ -20,6 +20,7 @@ const Document: React.FC<DocumentProps> = ({ path, bundlePath }) => (
           </Route>
           <Route path="/en">CV Nils Layet - TypeScript Developer</Route>
         </title>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       </head>
       <body>
         <div id="cv">

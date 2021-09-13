@@ -1,0 +1,5 @@
+# Looking for a dev who knows about robots.txt? Hire me!
+# (just kidding, I'm not very good at SEO)
+
+User-agent: *
+Allow: /

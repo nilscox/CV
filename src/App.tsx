@@ -81,7 +81,7 @@ const Routes: React.FC = () => (
   </Switch>
 );
 
-const Content: React.FC<{ data: Data }> = ({ data }) => {
+const useLogData = (data: Data) => {
   const [rendered, setRendered] = useState(false);
 
   useEffect(() => {
@@ -92,6 +92,26 @@ const Content: React.FC<{ data: Data }> = ({ data }) => {
       console.log(data);
     }
   }, [data, rendered]);
+};
+
+const useFlashingFavicon = () => {
+  useEffect(() => {
+    const favicon = document.querySelector('[href="/favicon.ico"]');
+
+    const interval = setInterval(() => {
+      favicon?.setAttribute('href', '/favicon_nerd.ico');
+      setTimeout(() => {
+        favicon?.setAttribute('href', '/favicon.ico');
+      }, 1234);
+    }, 17123);
+
+    return () => clearInterval(interval);
+  }, []);
+};
+
+const Content: React.FC<{ data: Data }> = ({ data }) => {
+  useLogData(data);
+  useFlashingFavicon();
 
   return (
     <Page>
