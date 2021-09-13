@@ -30,7 +30,7 @@ const Markdown: React.FC<MarkdownProps> = ({ children }) => {
     .join('\n')
     .split('\n\n')
       .map(processLines)
-    .join('\n\n');
+    .join('');
 
   return <div dangerouslySetInnerHTML={{ __html: html }} />;
 };
