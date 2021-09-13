@@ -20,7 +20,8 @@ const Document: React.FC<DocumentProps> = ({ path, bundlePath }) => (
           </Route>
           <Route path="/en">CV Nils Layet - TypeScript Developer</Route>
         </title>
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="/main.css" />
       </head>
       <body>
         <div id="cv">
@@ -42,7 +43,7 @@ type Locals = {
 export default (locals: Locals) => {
   return [
     '<!DOCTYPE html>',
-    '<!-- What are you looking for? -->',
+    '<!-- What are you looking for? :D -->',
     ReactDOMServer.renderToString(<Document path={locals.path} bundlePath={locals.assets.main} />),
   ].join('\n');
 };

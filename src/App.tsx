@@ -12,7 +12,8 @@ import { space, theme } from './theme';
 import { Data } from './types';
 
 import 'normalize.css';
-import 'typeface-jetbrains-mono';
+import '@fontsource/jetbrains-mono/latin-400.css';
+import '@fontsource/jetbrains-mono/latin-400-italic.css';
 
 const globalStyles = (theme: Theme) => css`
   html {

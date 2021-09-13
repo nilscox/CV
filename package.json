@@ -44,10 +44,10 @@
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
+    "@fontsource/jetbrains-mono": "^4.5.0",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router-dom": "^5.2.0",
-    "typeface-jetbrains-mono": "^2.0.0"
+    "react-router-dom": "^5.2.0"
   }
 }
