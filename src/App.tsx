@@ -95,24 +95,8 @@ const useLogData = (data: Data) => {
   }, [data, rendered]);
 };
 
-const useFlashingFavicon = () => {
-  useEffect(() => {
-    const favicon = document.querySelector('[href="/favicon.ico"]');
-
-    const interval = setInterval(() => {
-      favicon?.setAttribute('href', '/favicon_nerd.ico');
-      setTimeout(() => {
-        favicon?.setAttribute('href', '/favicon.ico');
-      }, 1234);
-    }, 17123);
-
-    return () => clearInterval(interval);
-  }, []);
-};
-
 const Content: React.FC<{ data: Data }> = ({ data }) => {
   useLogData(data);
-  useFlashingFavicon();
 
   return (
     <Page>
