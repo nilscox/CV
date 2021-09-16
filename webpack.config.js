@@ -1,20 +1,13 @@
 /* eslint-disable */
 
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
+const StaticSiteWebpackPlugin = require('static-site-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { HotModuleReplacementPlugin } = require('webpack');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const pkg = require('./package.json');
-
 const { NODE_ENV = 'development', HOST = '0.0.0.0', PORT = '8000' } = process.env;
-
-const devtool = 'source-map';
-const extensions = ['.js', '.ts', '.tsx'];
 
 const esbuildLoader = {
   test: /\.[jt]sx?$/,
@@ -25,14 +18,14 @@ const esbuildLoader = {
   },
 };
 
-const stylesLoader = {
-  test: /\.css$/,
-  use: ['style-loader', 'css-loader'],
-};
-
 const extractStylesLoader = {
   test: /\.css$/,
   use: [MiniCssExtractPlugin.loader, 'css-loader'],
+};
+
+const stylesLoader = {
+  test: /\.css$/,
+  use: ['style-loader', 'css-loader'],
 };
 
 const svgLoader = {
@@ -41,93 +34,72 @@ const svgLoader = {
 };
 
 const fileLoader = {
-  test: /\.(woff|woff2|jpg)$/,
+  test: /\.jpg$/,
   loader: 'file-loader',
   options: {
     name: '[name].[ext]',
   },
 };
 
-const copyStaticPlugin = new CopyWebpackPlugin({
-  patterns: [{ from: 'static' }],
-});
+const config = {
+  mode: 'production',
+  // mode: 'development',
+  devtool: 'source-map',
 
-if (NODE_ENV === 'production') {
-  /** @type {import('webpack').Configuration} */
-  const ssrConfig = {
-    mode: 'production',
-    devtool,
+  entry: './src/index.tsx',
 
-    resolve: { extensions },
+  output: {
+    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/~nils/cv-next/',
+    clean: true,
+  },
 
-    module: {
-      rules: [esbuildLoader, extractStylesLoader, svgLoader, fileLoader],
-    },
+  resolve: {
+    extensions: ['.js', '.ts', '.tsx'],
+  },
 
-    target: 'node',
-    entry: './src/index.ssr.tsx',
+  module: {
+    rules: [esbuildLoader, extractStylesLoader, svgLoader, fileLoader],
+  },
 
-    output: {
-      path: path.resolve(__dirname, 'dist'),
-      publicPath: '/',
-      libraryTarget: 'umd',
-    },
+  plugins: [
+    new MiniCssExtractPlugin(),
 
-    plugins: [
-      new CleanWebpackPlugin(),
-      new MiniCssExtractPlugin(),
-      new StaticSiteGeneratorPlugin({
-        paths: ['/', '/fr', '/en'],
-        locals: {
-          assets: {
-            main: `/bundle-${pkg.version}.js`,
-          },
-        },
-      }),
-    ],
-  };
+    new StaticSiteWebpackPlugin({
+      __filename,
+      entry: './src/index.ssr.tsx',
+      paths: ['/', '/fr', '/en'],
+    }),
 
-  /** @type {import('webpack').Configuration} */
-  const browserConfig = {
-    ...ssrConfig,
-    target: 'web',
-    entry: './src/index.tsx',
+    new CopyWebpackPlugin({
+      patterns: [{ from: 'static' }],
+    }),
+  ],
+};
 
-    output: {
-      filename: `bundle-${pkg.version}.js`,
-      path: path.resolve(__dirname, 'dist'),
-    },
-
-    plugins: [new MiniCssExtractPlugin(), copyStaticPlugin],
-  };
-
-  module.exports = [ssrConfig, browserConfig];
-}
+module.exports = config;
 
 if (NODE_ENV === 'development') {
   /** @type {import('webpack').Configuration} */
-  const config = {
+  const devConfig = {
+    ...config,
     mode: 'development',
-    devtool,
 
-    resolve: { extensions },
+    entry: './src/index.dev.tsx',
 
     module: {
       rules: [esbuildLoader, stylesLoader, svgLoader, fileLoader],
     },
 
-    entry: './src/index.dev.tsx',
-
-    output: {
-      filename: '[name].js',
-      path: path.resolve(__dirname, 'dist'),
-    },
-
     plugins: [
       new HtmlWebpackPlugin(),
-      new HotModuleReplacementPlugin(),
+
       new ReactRefreshWebpackPlugin(),
-      copyStaticPlugin,
+
+      new CopyWebpackPlugin({
+        patterns: [{ from: 'static' }],
+      }),
     ],
 
     devServer: {
@@ -140,5 +112,5 @@ if (NODE_ENV === 'development') {
     },
   };
 
-  module.exports = config;
+  module.exports = devConfig;
 }
