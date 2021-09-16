@@ -9,16 +9,17 @@ type EntryProps = {
   to?: string;
   date?: string;
   title: ReactNode;
+  link?: string;
   titleRight?: ReactNode;
   right?: ReactNode;
 };
 
-export const Entry: React.FC<EntryProps> = ({ from, to, date, title, titleRight, right, children }) => (
+export const Entry: React.FC<EntryProps> = ({ from, to, date, title, link, titleRight, right, children }) => (
   <Flex>
     <Dates from={from} to={to} date={date} />
     <Container>
       <Flex>
-        <Title>{title}</Title>
+        <Title>{link ? <a href={link}>{title}</a> : title}</Title>
         {titleRight && <TitleRight>{titleRight}</TitleRight>}
       </Flex>
       <Flex>
@@ -46,6 +47,11 @@ const Title = styled.h3`
   margin: ${space(0)};
   font-size: ${fontSize('big')};
   font-weight: bold;
+  color: ${color('textBold')};
+
+  & a {
+    text-decoration: none;
+  }
 `;
 
 const TitleRight = styled.div`

@@ -41,6 +41,7 @@ const Photo = styled.img`
   width: 100%;
   opacity: 0.85;
   transition: 1000ms filter ease-out;
+  border-radius: 4px;
   filter: grayscale(100%) brightness(110%) contrast(120%);
 
   &:hover {

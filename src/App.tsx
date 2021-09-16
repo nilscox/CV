@@ -7,8 +7,9 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import { Aside } from './Aside/Aside';
 import en from './data/en/cv.json';
 import fr from './data/fr/cv.json';
+import { useLanguage } from './Main/Flags';
 import { Main } from './Main/Main';
-import { space, theme } from './theme';
+import { space, theme, themeColors } from './theme';
 import { Data } from './types';
 
 import 'normalize.css';
@@ -16,6 +17,8 @@ import '@fontsource/jetbrains-mono/latin-400.css';
 import '@fontsource/jetbrains-mono/latin-400-italic.css';
 
 const globalStyles = (theme: Theme) => css`
+  ${themeColors}
+
   html {
     font-size: ${theme.fontSizes.default};
     line-height: ${theme.lineHeights.default};
@@ -29,6 +32,11 @@ const globalStyles = (theme: Theme) => css`
 
   p {
     margin: ${theme.spaces[1]}px 0;
+  }
+
+  strong {
+    font-weight: bold;
+    color: ${theme.colors.textBold};
   }
 
   a {
@@ -48,6 +56,12 @@ const globalStyles = (theme: Theme) => css`
   }
 
   @media print {
+    html,
+    body,
+    #cv {
+      height: 100%;
+    }
+
     html {
       font-size: 10px;
       line-height: 1.3em;
@@ -84,15 +98,21 @@ const Routes: React.FC = () => (
 
 const useLogData = (data: Data) => {
   const [rendered, setRendered] = useState(false);
+  const language = useLanguage();
 
   useEffect(() => {
     if (!rendered) {
       setRendered(true);
 
-      console.log('This is my resume, literally (:');
+      if (language === 'fr') {
+        console.log('Voici mon CV, littéralement (:');
+      } else {
+        console.log('This is my resume, literally (:');
+      }
+
       console.log(data);
     }
-  }, [data, rendered]);
+  }, [data, language, rendered]);
 };
 
 const Content: React.FC<{ data: Data }> = ({ data }) => {

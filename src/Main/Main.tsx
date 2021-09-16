@@ -6,9 +6,20 @@ import { color, fontSize, letterSpacing, lineHeight, space } from '../theme';
 import { Data } from '../types';
 
 import { About } from './About';
-import { Flags } from './Flags';
+import { Flags, useLanguage } from './Flags';
 import { Interests } from './Interests';
 import { Section, SectionTitle } from './Section';
+
+const useLastUpdate = () => {
+  const now = new Date();
+  const language = useLanguage();
+  const separator = language === 'fr' ? '/' : '-';
+
+  return [
+    language === 'fr' ? 'Dernière mise à jour : ' : 'Last update: ',
+    [String(now.getMonth() + 1).padStart(2, '0'), now.getFullYear()].join(separator),
+  ].join('');
+};
 
 export const Main: React.FC<{ data: Data }> = ({ data }) => (
   <Container>
@@ -31,6 +42,8 @@ export const Main: React.FC<{ data: Data }> = ({ data }) => (
 
     <SectionTitle>{data.labels.interests}</SectionTitle>
     <Interests interests={data.interests} />
+
+    <LastUpdate>{useLastUpdate()}</LastUpdate>
   </Container>
 );
 
@@ -69,6 +82,13 @@ const Separator = styled.hr`
   margin: 0;
   border: 0;
   border-bottom: 1px solid ${color('border')};
+`;
+
+const LastUpdate = styled.div`
+  text-align: right;
+  margin-top: ${space(3)};
+  font-size: ${fontSize('small')};
+  color: ${color('muted')};
 `;
 
 const Headline = styled.div`

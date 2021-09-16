@@ -1,21 +1,43 @@
-import { Theme } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
+
+export const themeColors = css`
+  html {
+    --theme-color-orange: #cc6600;
+    --theme-color-blue: #006699;
+    --theme-color-text: #333333;
+    --theme-color-textBold: #444444;
+    --theme-color-muted: #666666;
+    --theme-color-body: #f6f6f6;
+    --theme-color-border: #cccccc;
+    --theme-color-icon: #999999;
+    --theme-color-aside: #f0f0f0;
+
+    @media print {
+      /* --theme-color-orange: #333333; */
+      /* --theme-color-blue: #333333; */
+      --theme-color-body: white;
+      --theme-color-aside: white;
+    }
+  }
+`;
 
 export const theme: Theme = {
   colors: {
-    orange: '#cc6600',
-    blue: '#006699',
-    text: '#333333',
-    muted: '#666666',
-    body: '#F6F6F6',
-    border: '#CCCCCC',
-    icon: '#999999',
-    aside: '#F0F0F0',
+    orange: 'var(--theme-color-orange)',
+    blue: 'var(--theme-color-blue)',
+    text: 'var(--theme-color-text)',
+    textBold: 'var(--theme-color-textBold)',
+    muted: 'var(--theme-color-muted)',
+    body: 'var(--theme-color-body)',
+    border: 'var(--theme-color-border)',
+    icon: 'var(--theme-color-icon)',
+    aside: 'var(--theme-color-aside)',
   },
 
   spaces: [0, 4, 8, 16, 32],
 
   fonts: {
-    mono: "'JetBrains Mono', 'Courier New', Courier, monospace",
+    mono: "'JetBrains Mono', 'Liberation Mono', 'Courier New', Courier, monospace",
   },
 
   fontSizes: {

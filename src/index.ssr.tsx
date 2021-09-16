@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 import { MemoryRouter, Route } from 'react-router-dom';
+import { Stats } from 'webpack';
 
 import { App } from './App';
 
@@ -12,7 +13,7 @@ type DocumentProps = {
 
 const Document: React.FC<DocumentProps> = ({ path, bundlePath }) => (
   <MemoryRouter initialEntries={[path]}>
-    <html>
+    <html lang={path === '/en' ? 'en' : 'fr'}>
       <head>
         <title>
           <Route exact path="/(fr)?">
@@ -35,15 +36,20 @@ const Document: React.FC<DocumentProps> = ({ path, bundlePath }) => (
 
 type Locals = {
   path: string;
-  assets: {
-    main: string;
-  };
+  webpackStats: Stats;
 };
 
-export default (locals: Locals) => {
+export default ({ path, webpackStats }: Locals) => {
+  const assets = Object.keys(webpackStats.compilation.assets);
+  const publicPath = webpackStats.toJson().publicPath ?? '';
+
+  const getAssets = (ext: string) => {
+    return assets.filter((filename) => filename.endsWith(`.${ext}`)).map((asset) => [publicPath, asset].join(''));
+  };
+
   return [
     '<!DOCTYPE html>',
     '<!-- What are you looking for? :D -->',
-    ReactDOMServer.renderToString(<Document path={locals.path} bundlePath={locals.assets.main} />),
+    ReactDOMServer.renderToString(<Document path={path} bundlePath={getAssets('js')[0]} />),
   ].join('\n');
 };

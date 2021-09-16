@@ -8,14 +8,20 @@ import { space } from '../theme';
 import FlagFR from './flags/fr.svg';
 import FlagUS from './flags/us.svg';
 
+export type Language = 'fr' | 'en';
+
+export const useLanguage = (): Language => {
+  return useRouteMatch('/en') ? 'en' : 'fr';
+};
+
 export const Flags: React.FC = () => {
   const [hover, setHover] = useState(false);
-  const isEnglish = useRouteMatch('/en');
+  const language = useLanguage();
 
   return (
     <Container hover={hover} onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)}>
-      <LanguageLink showIcon hover={hover} lang={isEnglish ? 'en' : 'fr'} />
-      <LanguageLink hover={hover} lang={isEnglish ? 'fr' : 'en'} />
+      <LanguageLink showIcon hover={hover} language={language} />
+      <LanguageLink hover={hover} language={language === 'fr' ? 'en' : 'fr'} />
     </Container>
   );
 };
@@ -50,13 +56,13 @@ const flags = { fr: FlagFR, en: FlagUS };
 type LanguageLinkProps = {
   showIcon?: true;
   hover: boolean;
-  lang: 'fr' | 'en';
+  language: Language;
 };
 
-const LanguageLink: React.FC<LanguageLinkProps> = ({ showIcon, hover, lang }) => (
-  <Link to={links[lang]}>
-    <Language hover={hover}>{languages[lang]}</Language>
-    <Icon as={flags[lang]} show={showIcon ?? hover} />
+const LanguageLink: React.FC<LanguageLinkProps> = ({ showIcon, hover, language }) => (
+  <Link to={links[language]}>
+    <Language hover={hover}>{languages[language]}</Language>
+    <Icon as={flags[language]} show={showIcon ?? hover} />
   </Link>
 );
 

@@ -5,13 +5,11 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { App } from './App';
 
-if (document) {
-  ReactDOM.render(
-    <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </React.StrictMode>,
-    document.getElementById('cv'),
-  );
-}
+ReactDOM.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById('cv'),
+);

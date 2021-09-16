@@ -18,19 +18,22 @@ export const Section: React.FC<SectionProps> = ({ title, entries }) => (
     <SectionTitle>{title}</SectionTitle>
 
     <Entries>
-      {entries.map(({ from, to, date, name, company, link, location, description, technologies }, index) => (
-        <Entry
-          key={index}
-          from={from}
-          to={to}
-          date={date}
-          title={name}
-          titleRight={<SectionTitleRight link={link} company={company} location={location} />}
-          right={technologies && <>{technologies.join(', ')}</>}
-        >
-          <Markdown>{description}</Markdown>
-        </Entry>
-      ))}
+      {entries.map(
+        ({ from, to, date, name, company, link, companyLink, location, description, technologies }, index) => (
+          <Entry
+            key={index}
+            from={from}
+            to={to}
+            date={date}
+            title={name}
+            link={link}
+            titleRight={<SectionTitleRight link={companyLink} company={company} location={location} />}
+            right={technologies && <>{technologies.join(', ')}</>}
+          >
+            <Markdown>{description}</Markdown>
+          </Entry>
+        ),
+      )}
     </Entries>
   </>
 );
