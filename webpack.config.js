@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { EnvironmentPlugin } = require('webpack');
 
 const { NODE_ENV = 'development', HOST = '0.0.0.0', PORT = '8000' } = process.env;
 
@@ -41,6 +42,29 @@ const fileLoader = {
   },
 };
 
+const environmentPlugin = new EnvironmentPlugin({
+  NODE_ENV: 'development',
+  TRACKING_URL: null,
+  TRACKING_SITE_ID: null,
+});
+
+const miniCssExtractPlugin = new MiniCssExtractPlugin();
+
+const staticSitePlugin = new StaticSiteWebpackPlugin({
+  __filename,
+  entry: './src/index.ssr.tsx',
+  paths: ['/', '/fr', '/en'],
+});
+
+const copyPlugin = new CopyWebpackPlugin({
+  patterns: [{ from: 'static' }],
+});
+
+const htmlPlugin = new HtmlWebpackPlugin();
+
+const reactRefreshPlugin = new ReactRefreshWebpackPlugin();
+
+/** @type {import('webpack').Configuration} */
 const config = {
   mode: 'production',
   // mode: 'development',
@@ -51,7 +75,7 @@ const config = {
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/~nils/cv-next/',
+    publicPath: '/',
     clean: true,
   },
 
@@ -63,19 +87,7 @@ const config = {
     rules: [esbuildLoader, extractStylesLoader, svgLoader, fileLoader],
   },
 
-  plugins: [
-    new MiniCssExtractPlugin(),
-
-    new StaticSiteWebpackPlugin({
-      __filename,
-      entry: './src/index.ssr.tsx',
-      paths: ['/', '/fr', '/en'],
-    }),
-
-    new CopyWebpackPlugin({
-      patterns: [{ from: 'static' }],
-    }),
-  ],
+  plugins: [environmentPlugin, miniCssExtractPlugin, staticSitePlugin, copyPlugin],
 };
 
 module.exports = config;
@@ -84,6 +96,7 @@ if (NODE_ENV === 'development') {
   /** @type {import('webpack').Configuration} */
   const devConfig = {
     ...config,
+
     mode: 'development',
 
     entry: './src/index.dev.tsx',
@@ -92,15 +105,7 @@ if (NODE_ENV === 'development') {
       rules: [esbuildLoader, stylesLoader, svgLoader, fileLoader],
     },
 
-    plugins: [
-      new HtmlWebpackPlugin(),
-
-      new ReactRefreshWebpackPlugin(),
-
-      new CopyWebpackPlugin({
-        patterns: [{ from: 'static' }],
-      }),
-    ],
+    plugins: [environmentPlugin, htmlPlugin, reactRefreshPlugin, copyPlugin],
 
     devServer: {
       host: HOST,

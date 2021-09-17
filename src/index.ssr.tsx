@@ -20,9 +20,9 @@ const Document: React.FC<DocumentProps> = ({ path, bundlePath, stylesPath, favic
         <meta charSet="utf8" />
         <title>
           <Route exact path="/(fr)?">
-            CV Nils Layet - Développeur TypeScript
+            Nils Layet - Développeur TypeScript
           </Route>
-          <Route path="/en">CV Nils Layet - TypeScript Developer</Route>
+          <Route path="/en">Nils Layet - TypeScript Developer</Route>
         </title>
         <link rel="shortcut icon" href={faviconPath} />
         <link rel="stylesheet" href={stylesPath} />

@@ -10,6 +10,7 @@ import fr from './data/fr/cv.json';
 import { useLanguage } from './Main/Flags';
 import { Main } from './Main/Main';
 import { space, theme, themeColors } from './theme';
+import { TrackingProvider, TrackPageView } from './tracking';
 import { Data } from './types';
 
 import 'normalize.css';
@@ -75,10 +76,13 @@ const globalStyles = (theme: Theme) => css`
 
 export const App: React.FC = () => (
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <Global styles={globalStyles} />
-      <Routes />
-    </ThemeProvider>
+    <TrackingProvider>
+      <ThemeProvider theme={theme}>
+        <TrackPageView />
+        <Global styles={globalStyles} />
+        <Routes />
+      </ThemeProvider>
+    </TrackingProvider>
   </React.StrictMode>
 );
 
