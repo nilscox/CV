@@ -2,6 +2,7 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
+import { useLanguage } from '../Main/Flags';
 import { color, fontSize, space } from '../theme';
 import { Contact as ContactType } from '../types';
 
@@ -18,42 +19,77 @@ const socialIcons = {
   Twitter,
 };
 
+const useContactPlaceholders = (firstName: string) => {
+  const language = useLanguage();
+
+  if (language === 'fr') {
+    return {
+      subject: 'Prise de contact',
+      body: `Salut ${firstName} ! J'aimerais échanger avec toi concernant...`,
+    };
+  } else {
+    return {
+      subject: 'First contact',
+      body: `Hello ${firstName}! I'd like to talk with you about...`,
+    };
+  }
+};
+
 type ContactProps = {
+  firstName: string;
   contact: ContactType;
 };
 
-export const Contact: React.FC<ContactProps> = ({ contact }) => (
-  <Container>
-    {contact.location && <ContactItem>{contact.location}</ContactItem>}
+export const Contact: React.FC<ContactProps> = ({ firstName, contact }) => {
+  const language = useLanguage();
+  const { subject, body } = useContactPlaceholders(firstName);
 
-    {contact.phone && (
-      <ContactItem icon={Phone} link={`tel:${contact.phone}`}>
-        {contact.phone}
-      </ContactItem>
-    )}
+  return (
+    <Container>
+      {contact.location && <ContactItem>{contact.location}</ContactItem>}
 
-    {contact.email && (
-      <ContactItem icon={Envelope} link={`mailto:${contact.email}`}>
-        {contact.email}
-      </ContactItem>
-    )}
+      {contact.phone && (
+        <ContactItem icon={Phone} link={`tel:${contact.phone}`}>
+          {contact.phone}
+        </ContactItem>
+      )}
 
-    {contact.website && (
-      <ContactItem icon={Web} link={contact.website}>
-        {contact.website}
-      </ContactItem>
-    )}
+      {contact.email && (
+        <ContactItem icon={Envelope} link={`mailto:${contact.email}?subject=${subject}&body=${body}`}>
+          {contact.email}
+        </ContactItem>
+      )}
 
-    {Object.entries(contact.social).map(([network, { name, link }]) => (
-      <ContactItem key={network} icon={socialIcons[network as keyof ContactType['social']]} link={link} label={network}>
-        {name}
-      </ContactItem>
-    ))}
-  </Container>
-);
+      {contact.website && (
+        <ContactItem icon={Web} link={contact.website}>
+          {contact.website}
+        </ContactItem>
+      )}
+
+      {Object.entries(contact.social).map(([network, { name, link }]) => (
+        <ContactItem
+          key={network}
+          icon={socialIcons[network as keyof ContactType['social']]}
+          link={link}
+          label={network}
+        >
+          {name}
+        </ContactItem>
+      ))}
+
+      {language === 'fr' && <Tutoiement>On peut se tutoyer :)</Tutoiement>}
+    </Container>
+  );
+};
 
 const Container = styled.div`
   text-align: right;
+`;
+
+const Tutoiement = styled.div`
+  font-size: ${fontSize('small')};
+  color: ${color('textBold')};
+  text-align: left;
 `;
 
 type ContactItemProps = {

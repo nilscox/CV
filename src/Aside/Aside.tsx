@@ -15,7 +15,7 @@ export const Aside: React.FC<{ data: Data }> = ({ data }) => (
     <Photo src={photo} alt="My face =)" />
 
     <SectionTitle>{data.labels.contact}</SectionTitle>
-    <Contact contact={data.contact} />
+    <Contact firstName={data.firstName} contact={data.contact} />
 
     <SectionTitle>{data.labels.skills}</SectionTitle>
     <Skills skills={data.skills} />

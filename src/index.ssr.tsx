@@ -18,6 +18,19 @@ const Document: React.FC<DocumentProps> = ({ path, bundlePath, stylesPath, favic
     <html lang={path === '/en' ? 'en' : 'fr'}>
       <head>
         <meta charSet="utf8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.75" />
+        <Route exact path="/(fr)?">
+          <meta
+            name="description"
+            content="Développeur web passionné, spécialisé sur React et Node / NestJS, particulièrement attaché aux bonnes pratiques et à l'architecture des systèmes."
+          />
+        </Route>
+        <Route path="/en">
+          <meta
+            name="description"
+            content="Passionate web developer, specialized in React and Node / NestJS, particularly attached to good practices and system architecture."
+          />
+        </Route>
         <title>
           <Route exact path="/(fr)?">
             Nils Layet - Développeur TypeScript
