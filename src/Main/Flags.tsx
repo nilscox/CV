@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import styled from '@emotion/styled';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link, useMatch } from 'react-router-dom';
 
 import { space } from '../theme';
 
@@ -11,10 +11,10 @@ import FlagUS from './flags/us.svg';
 export type Language = 'fr' | 'en';
 
 export const useLanguage = (): Language => {
-  return useRouteMatch('/en') ? 'en' : 'fr';
+  return useMatch('/en') ? 'en' : 'fr';
 };
 
-export const Flags: React.FC = () => {
+export const Flags = () => {
   const [hover, setHover] = useState(false);
   const language = useLanguage();
 
@@ -59,7 +59,7 @@ type LanguageLinkProps = {
   language: Language;
 };
 
-const LanguageLink: React.FC<LanguageLinkProps> = ({ showIcon, hover, language }) => (
+const LanguageLink = ({ showIcon, hover, language }: LanguageLinkProps) => (
   <Link to={links[language]}>
     <Language hover={hover}>{languages[language]}</Language>
     <Icon as={flags[language]} show={showIcon ?? hover} />

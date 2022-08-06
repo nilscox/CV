@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styled from '@emotion/styled';
 
 import { color, fontSize, letterSpacing, lineHeight, space } from '../theme';
@@ -21,7 +19,7 @@ const useLastUpdate = () => {
   ].join('');
 };
 
-export const Main: React.FC<{ data: Data }> = ({ data }) => (
+export const Main = ({ data }: { data: Data }) => (
   <Container>
     <Flags />
 

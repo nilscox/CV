@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import styled from '@emotion/styled';
 
@@ -12,9 +12,10 @@ type EntryProps = {
   link?: string;
   titleRight?: ReactNode;
   right?: ReactNode;
+  children: ReactNode;
 };
 
-export const Entry: React.FC<EntryProps> = ({ from, to, date, title, link, titleRight, right, children }) => (
+export const Entry = ({ from, to, date, title, link, titleRight, right, children }: EntryProps) => (
   <Flex>
     <Dates from={from} to={to} date={date} />
     <Container>
@@ -74,7 +75,7 @@ type DatesProps = {
   date?: string;
 };
 
-const Dates: React.FC<DatesProps> = ({ from, to: toProp, date }) => {
+const Dates = ({ from, to: toProp, date }: DatesProps) => {
   const [to, setTo] = useState(toProp);
 
   useEffect(() => {

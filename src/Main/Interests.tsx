@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 import styled from '@emotion/styled';
 
@@ -9,7 +9,7 @@ type InterestsProps = {
   interests: Interest[];
 };
 
-export const Interests: React.FC<InterestsProps> = ({ interests }) => (
+export const Interests = ({ interests }: InterestsProps) => (
   <Container>
     {interests.map(({ name, description, link }, index) => (
       <Interest key={index} title={name} link={link}>
@@ -28,9 +28,10 @@ const Container = styled.div`
 type InterestProps = {
   title: string;
   link?: string;
+  children: ReactNode;
 };
 
-const Interest: React.FC<InterestProps> = ({ title, children, link }) => (
+const Interest = ({ title, children, link }: InterestProps) => (
   <InterestContainer as={link ? 'a' : 'div'} href={link}>
     <Title>{title}</Title>
     {children}

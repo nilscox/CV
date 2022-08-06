@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import styled from '@emotion/styled';
 
@@ -29,7 +29,7 @@ const useCommentsStyles = () => {
   return style;
 };
 
-export const About: React.FC<{ link: string }> = ({ link, children }) => {
+export const About = ({ link, children }: { link: string; children: ReactNode }) => {
   const [open, close] = useCommentsStyles();
 
   return (

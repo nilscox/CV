@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { StrictMode, useEffect, useRef } from 'react';
 
 import { css, Global, Theme, ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import { Navigate, Route, Routes as RRRoutes } from 'react-router-dom';
 
 import { Aside } from './Aside/Aside';
 import en from './data/en/cv.json';
@@ -13,9 +14,9 @@ import { space, theme, themeColors } from './theme';
 import { TrackingProvider, TrackPageView } from './tracking';
 import { Data } from './types';
 
-import 'normalize.css';
-import '@fontsource/jetbrains-mono/latin-400.css';
 import '@fontsource/jetbrains-mono/latin-400-italic.css';
+import '@fontsource/jetbrains-mono/latin-400.css';
+import 'normalize.css';
 
 const globalStyles = (theme: Theme) => css`
   ${themeColors}
@@ -74,8 +75,8 @@ const globalStyles = (theme: Theme) => css`
   }
 `;
 
-export const App: React.FC = () => (
-  <React.StrictMode>
+export const App = () => (
+  <StrictMode>
     <TrackingProvider>
       <ThemeProvider theme={theme}>
         <TrackPageView />
@@ -83,30 +84,49 @@ export const App: React.FC = () => (
         <Routes />
       </ThemeProvider>
     </TrackingProvider>
-  </React.StrictMode>
+  </StrictMode>
 );
 
-const Routes: React.FC = () => (
-  <Switch>
-    <Route exact path="/(fr)?">
-      <Content data={fr} />
+const Routes = () => (
+  <RRRoutes>
+    <Route path="/">
+      <Route index element={<Content data={fr} />} />
+      <Route path="fr" element={<Content data={fr} />} />
+      <Route path="en" element={<Content data={en} />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Route>
-    <Route path="/en">
-      <Content data={en} />
-    </Route>
-    <Route>
-      <Redirect to="/" />
-    </Route>
-  </Switch>
+  </RRRoutes>
 );
+
+const Content = ({ data }: { data: Data }) => {
+  useLogData(data);
+
+  return (
+    <Page>
+      <Helmet>
+        <meta
+          name="description"
+          content={
+            data === fr
+              ? "Développeur web passionné, spécialisé sur React et Node / NestJS, particulièrement attaché aux bonnes pratiques et à l'architecture des systèmes."
+              : 'Passionate web developer, specialized in React and Node / NestJS, particularly attached to good practices and system architecture.'
+          }
+        />
+        <title>{data === fr ? 'Nils Layet - Développeur TypeScript' : 'Nils Layet - TypeScript Developer'}</title>
+      </Helmet>
+      <Aside data={data} />
+      <Main data={data} />
+    </Page>
+  );
+};
 
 const useLogData = (data: Data) => {
-  const [rendered, setRendered] = useState(false);
+  const logged = useRef(false);
   const language = useLanguage();
 
   useEffect(() => {
-    if (!rendered) {
-      setRendered(true);
+    if (!logged.current) {
+      logged.current = true;
 
       if (language === 'fr') {
         console.log('Voici mon CV, littéralement (:');
@@ -116,18 +136,7 @@ const useLogData = (data: Data) => {
 
       console.log(data);
     }
-  }, [data, language, rendered]);
-};
-
-const Content: React.FC<{ data: Data }> = ({ data }) => {
-  useLogData(data);
-
-  return (
-    <Page>
-      <Aside data={data} />
-      <Main data={data} />
-    </Page>
-  );
+  }, [data, language]);
 };
 
 const Page = styled.div`

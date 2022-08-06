@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styled from '@emotion/styled';
 
 import { color, fontSize, space } from '../theme';
@@ -10,7 +8,7 @@ import { Languages } from './Languages';
 import photo from './photo.jpg';
 import { Skills } from './Skills';
 
-export const Aside: React.FC<{ data: Data }> = ({ data }) => (
+export const Aside = ({ data }: { data: Data }) => (
   <Container>
     <Photo src={photo} alt="My face =)" />
 

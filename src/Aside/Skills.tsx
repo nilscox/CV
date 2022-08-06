@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styled from '@emotion/styled';
 
 import { space } from '../theme';
@@ -8,7 +6,7 @@ type SkillsProps = {
   skills: Record<string, string>;
 };
 
-export const Skills: React.FC<SkillsProps> = ({ skills }) => (
+export const Skills = ({ skills }: SkillsProps) => (
   <Container>
     {Object.entries(skills).map(([skill, level], index) => (
       <Skill key={index} level={level.length}>

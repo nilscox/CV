@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styled from '@emotion/styled';
 
 import { fontSize, lineHeight } from '../theme';
@@ -9,7 +7,7 @@ type LanguagesProps = {
   languages: LanguagesType;
 };
 
-export const Languages: React.FC<LanguagesProps> = ({ languages }) => (
+export const Languages = ({ languages }: LanguagesProps) => (
   <div>
     {Object.entries(languages).map(([language, level], index) => (
       <Language key={index}>

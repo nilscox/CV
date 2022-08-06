@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 import styled from '@emotion/styled';
 
@@ -40,7 +40,7 @@ type ContactProps = {
   contact: ContactType;
 };
 
-export const Contact: React.FC<ContactProps> = ({ firstName, contact }) => {
+export const Contact = ({ firstName, contact }: ContactProps) => {
   const language = useLanguage();
   const { subject, body } = useContactPlaceholders(firstName);
 
@@ -96,9 +96,10 @@ type ContactItemProps = {
   icon?: React.ComponentType;
   link?: string;
   label?: string;
+  children: ReactNode;
 };
 
-const ContactItem: React.FC<ContactItemProps> = ({ icon, link, label, children }) => (
+const ContactItem = ({ icon, link, label, children }: ContactItemProps) => (
   <ItemContainer as={link ? 'a' : 'div'} href={link}>
     {icon && <Icon as={icon} />}
     <Label>{label}</Label>

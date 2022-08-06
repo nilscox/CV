@@ -1,5 +1,3 @@
-import React from 'react';
-
 const processLine = (line: string) => {
   return (
     line
@@ -22,7 +20,7 @@ type MarkdownProps = {
   children: string;
 };
 
-const Markdown: React.FC<MarkdownProps> = ({ children }) => {
+const Markdown = ({ children }: MarkdownProps) => {
   // prettier-ignore
   const html = children
     .split('\n')

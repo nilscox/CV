@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { ComponentProps, ComponentType, PropsWithChildren, useEffect } from 'react';
 
 import { createInstance, MatomoProvider, useMatomo } from '@datapunt/matomo-tracker-react';
 import { useLocation } from 'react-router-dom';
@@ -13,11 +13,15 @@ const instance = createInstance({
   disabled: NODE_ENV !== 'production',
 });
 
-export const TrackingProvider: React.FC = ({ children }) => (
-  <MatomoProvider value={instance}>{children}</MatomoProvider>
+const MatomoProviderWithChildren = MatomoProvider as ComponentType<
+  PropsWithChildren<ComponentProps<typeof MatomoProvider>>
+>;
+
+export const TrackingProvider = ({ children }: PropsWithChildren) => (
+  <MatomoProviderWithChildren value={instance}>{children}</MatomoProviderWithChildren>
 );
 
-export const TrackPageView: React.FC = () => {
+export const TrackPageView = () => {
   const location = useLocation();
   const { trackPageView } = useMatomo();
 

@@ -1,7 +1,6 @@
-import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
-import { MemoryRouter, Route } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { Stats } from 'webpack';
 
 import { App } from './App';
@@ -13,30 +12,12 @@ type DocumentProps = {
   faviconPath: string;
 };
 
-const Document: React.FC<DocumentProps> = ({ path, bundlePath, stylesPath, faviconPath }) => (
+const Document = ({ path, bundlePath, stylesPath, faviconPath }: DocumentProps) => (
   <MemoryRouter initialEntries={[path]}>
     <html lang={path === '/en' ? 'en' : 'fr'}>
       <head>
         <meta charSet="utf8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.75" />
-        <Route exact path="/(fr)?">
-          <meta
-            name="description"
-            content="Développeur web passionné, spécialisé sur React et Node / NestJS, particulièrement attaché aux bonnes pratiques et à l'architecture des systèmes."
-          />
-        </Route>
-        <Route path="/en">
-          <meta
-            name="description"
-            content="Passionate web developer, specialized in React and Node / NestJS, particularly attached to good practices and system architecture."
-          />
-        </Route>
-        <title>
-          <Route exact path="/(fr)?">
-            Nils Layet - Développeur TypeScript
-          </Route>
-          <Route path="/en">Nils Layet - TypeScript Developer</Route>
-        </title>
         <link rel="shortcut icon" href={faviconPath} />
         <link rel="stylesheet" href={stylesPath} />
       </head>

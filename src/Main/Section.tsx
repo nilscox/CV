@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styled from '@emotion/styled';
 
 import Markdown from '../Markdown';
@@ -13,7 +11,7 @@ type SectionProps = {
   entries: EntryType[];
 };
 
-export const Section: React.FC<SectionProps> = ({ title, entries }) => (
+export const Section = ({ title, entries }: SectionProps) => (
   <>
     <SectionTitle>{title}</SectionTitle>
 
@@ -54,7 +52,7 @@ type SectionTitleRightProps = {
   location?: string;
 };
 
-const SectionTitleRight: React.FC<SectionTitleRightProps> = ({ link, company, location }) => {
+const SectionTitleRight = ({ link, company, location }: SectionTitleRightProps) => {
   if (!company && !location) {
     return null;
   }
