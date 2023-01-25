@@ -45,8 +45,8 @@ const fileLoader = {
 const environmentPlugin = new EnvironmentPlugin({
   NODE_ENV: 'development',
   PUBLIC_PATH: '/',
-  TRACKING_URL: null,
-  TRACKING_SITE_ID: null,
+  ANALYTICS_URL: null,
+  ANALYTICS_SITE_ID: null,
 });
 
 const miniCssExtractPlugin = new MiniCssExtractPlugin();

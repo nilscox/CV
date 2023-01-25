@@ -5,13 +5,13 @@ import styled from '@emotion/styled';
 import { Helmet } from 'react-helmet';
 import { Navigate, Route, Routes as RRRoutes } from 'react-router-dom';
 
+import { AnalyticsProvider, TrackPageView } from './analytics';
 import { Aside } from './Aside/Aside';
 import en from './data/en/cv.json';
 import fr from './data/fr/cv.json';
 import { useLanguage } from './Main/Flags';
 import { Main } from './Main/Main';
 import { space, theme, themeColors } from './theme';
-import { TrackingProvider, TrackPageView } from './tracking';
 import { Data } from './types';
 
 import '@fontsource/jetbrains-mono/latin-400-italic.css';
@@ -77,13 +77,13 @@ const globalStyles = (theme: Theme) => css`
 
 export const App = () => (
   <StrictMode>
-    <TrackingProvider>
+    <AnalyticsProvider>
       <ThemeProvider theme={theme}>
         <TrackPageView />
         <Global styles={globalStyles} />
         <Routes />
       </ThemeProvider>
-    </TrackingProvider>
+    </AnalyticsProvider>
   </StrictMode>
 );
 

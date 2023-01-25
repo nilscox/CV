@@ -47,10 +47,10 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "@datapunt/matomo-tracker-react": "^0.5.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@fontsource/jetbrains-mono": "^4.5.12",
+    "@jonkoops/matomo-tracker-react": "^0.7.0",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
