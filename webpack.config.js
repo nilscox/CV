@@ -44,6 +44,7 @@ const fileLoader = {
 
 const environmentPlugin = new EnvironmentPlugin({
   NODE_ENV: 'development',
+  PUBLIC_PATH: '/',
   TRACKING_URL: null,
   TRACKING_SITE_ID: null,
 });
@@ -75,7 +76,7 @@ const config = {
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath: process.env.PUBLIC_PATH,
     clean: true,
   },
 

@@ -8,10 +8,12 @@ import { space } from '../theme';
 import FlagFR from './flags/fr.svg';
 import FlagUS from './flags/us.svg';
 
+const publicPath = process.env.PUBLIC_PATH ?? '/';
+
 export type Language = 'fr' | 'en';
 
 export const useLanguage = (): Language => {
-  return useMatch('/en') ? 'en' : 'fr';
+  return useMatch(links.en) ? 'en' : 'fr';
 };
 
 export const Flags = () => {
@@ -49,7 +51,7 @@ const Container = styled.div<{ hover: boolean }>`
   }
 `;
 
-const links = { fr: '/', en: '/en' };
+const links = { fr: publicPath, en: publicPath + 'en' };
 const languages = { fr: 'Français', en: 'English' };
 const flags = { fr: FlagFR, en: FlagUS };
 
