@@ -13,22 +13,20 @@ type DocumentProps = {
 };
 
 const Document = ({ path, bundlePath, stylesPath, faviconPath }: DocumentProps) => (
-  <MemoryRouter initialEntries={[path]}>
-    <html lang={path === '/en' ? 'en' : 'fr'}>
-      <head>
-        <meta charSet="utf8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.75" />
-        <link rel="shortcut icon" href={faviconPath} />
-        <link rel="stylesheet" href={stylesPath} />
-      </head>
-      <body>
-        <div id="cv">
-          <App />
-        </div>
-        <script src={bundlePath} />
-      </body>
-    </html>
-  </MemoryRouter>
+  <html lang={path.endsWith('en') ? 'en' : 'fr'}>
+    <head>
+      <meta charSet="utf8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.75" />
+      <link rel="shortcut icon" href={faviconPath} />
+      <link rel="stylesheet" href={stylesPath} />
+    </head>
+    <body>
+      <div id="cv">
+        <App />
+      </div>
+      <script src={bundlePath} />
+    </body>
+  </html>
 );
 
 type Locals = {
@@ -50,12 +48,14 @@ export default ({ path, webpackStats }: Locals) => {
     '<!DOCTYPE html>',
     '<!-- What are you looking for? :D -->',
     ReactDOMServer.renderToString(
-      <Document
-        path={path}
-        bundlePath={getAssets('js')[0]}
-        stylesPath={getAssets('css')[0]}
-        faviconPath={getAssets('ico')[0]}
-      />,
+      <MemoryRouter initialEntries={[path]} basename={publicPath}>
+        <Document
+          path={path}
+          bundlePath={getAssets('js')[0]}
+          stylesPath={getAssets('css')[0]}
+          faviconPath={getAssets('ico')[0]}
+        />
+      </MemoryRouter>,
     ),
   ].join('\n');
 };

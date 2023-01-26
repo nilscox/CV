@@ -89,12 +89,10 @@ export const App = () => (
 
 const Routes = () => (
   <RRRoutes>
-    <Route path="/">
-      <Route index element={<Content data={fr} />} />
-      <Route path="fr" element={<Content data={fr} />} />
-      <Route path="en" element={<Content data={en} />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Route>
+    <Route index element={<Content data={fr} />} />
+    <Route path="fr" element={<Content data={fr} />} />
+    <Route path="en" element={<Content data={en} />} />
+    <Route path="*" element={<Navigate to="/" replace />} />
   </RRRoutes>
 );
 

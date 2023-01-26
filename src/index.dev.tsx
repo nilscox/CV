@@ -7,7 +7,7 @@ import { App } from './App';
 
 createRoot(document.getElementById('cv') as HTMLElement).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_PATH}>
       <App />
     </BrowserRouter>
   </StrictMode>,

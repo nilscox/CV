@@ -8,7 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { EnvironmentPlugin } = require('webpack');
 
-const { NODE_ENV = 'development', HOST = '0.0.0.0', PORT = '8000' } = process.env;
+const { NODE_ENV = 'development', HOST = '0.0.0.0', PORT = '8000', PUBLIC_PATH = '' } = process.env;
 
 const esbuildLoader = {
   test: /\.[jt]sx?$/,
@@ -44,6 +44,7 @@ const fileLoader = {
 
 const environmentPlugin = new EnvironmentPlugin({
   NODE_ENV: 'development',
+  PUBLIC_PATH,
   ANALYTICS_URL: null,
   ANALYTICS_SITE_ID: null,
 });
@@ -75,7 +76,7 @@ const config = {
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: process.env.PUBLIC_PATH,
+    publicPath: PUBLIC_PATH,
     clean: true,
   },
 

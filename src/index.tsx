@@ -4,8 +4,10 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { App } from './App';
 
+const publicPath = process.env.PUBLIC_PATH as string;
+
 ReactDOM.hydrate(
-  <BrowserRouter>
+  <BrowserRouter basename={publicPath}>
     <App />
   </BrowserRouter>,
   document.getElementById('cv'),
