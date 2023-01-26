@@ -44,7 +44,6 @@ const fileLoader = {
 
 const environmentPlugin = new EnvironmentPlugin({
   NODE_ENV: 'development',
-  PUBLIC_PATH: '/',
   ANALYTICS_URL: null,
   ANALYTICS_SITE_ID: null,
 });

@@ -87,15 +87,13 @@ export const App = () => (
   </StrictMode>
 );
 
-const publicPath = process.env.PUBLIC_PATH ?? '/';
-
 const Routes = () => (
   <RRRoutes>
-    <Route path={publicPath}>
+    <Route path="/">
       <Route index element={<Content data={fr} />} />
       <Route path="fr" element={<Content data={fr} />} />
       <Route path="en" element={<Content data={en} />} />
-      <Route path="*" element={<Navigate to={publicPath} replace />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Route>
   </RRRoutes>
 );
@@ -110,8 +108,8 @@ const Content = ({ data }: { data: Data }) => {
           name="description"
           content={
             data === fr
-              ? "Développeur web passionné, spécialisé sur React et Node / NestJS, particulièrement attaché aux bonnes pratiques et à l'architecture logicielle."
-              : 'Passionate web developer, specialized in React and Node / NestJS, particularly attached to good practices and software architecture.'
+              ? "Développeur web passionné, spécialisé sur React et Node / NestJS, particulièrement attaché aux bonnes pratiques et à l'architecture des systèmes."
+              : 'Passionate web developer, specialized in React and Node / NestJS, particularly attached to good practices and system architecture.'
           }
         />
         <title>{data === fr ? 'Nils Layet - Développeur TypeScript' : 'Nils Layet - TypeScript Developer'}</title>
